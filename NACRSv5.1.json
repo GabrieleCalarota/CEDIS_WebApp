@@ -1,0 +1,515 @@
+{
+   "101": {
+      "Description": "Dental/gum problem"
+   },
+   "102": {
+      "Description": "Facial trauma"
+   },
+   "103": {
+      "Description": "Sore throat"
+   },
+   "104": {
+      "Description": "Neck swelling/pain"
+   },
+   "105": {
+      "Description": "Neck trauma"
+   },
+   "106": {
+      "Description": "Difficulty swallowing/dysphagia"
+   },
+   "107": {
+      "Description": "Facial pain (non-traumatic/non-dental)"
+   },
+   "151": {
+      "Description": "Epistaxis"
+   },
+   "152": {
+      "Description": "Nasal congestion/hay fever"
+   },
+   "153": {
+      "Description": "Foreign body, nose"
+   },
+   "154": {
+      "Description": "URTI complaints"
+   },
+   "155": {
+      "Description": "Nasal trauma"
+   },
+   "201": {
+      "Description": "Frostbite/cold injury"
+   },
+   "202": {
+      "Description": "Noxious inhalation"
+   },
+   "203": {
+      "Description": "Electrical injury"
+   },
+   "204": {
+      "Description": "Chemical exposure"
+   },
+   "205": {
+      "Description": "Hypothermia"
+   },
+   "206": {
+      "Description": "Drowning"
+   },
+   "207": {
+      "Description": "Heat-related issue"
+   },
+   "251": {
+      "Description": "Abdominal pain"
+   },
+   "252": {
+      "Description": "Anorexia"
+   },
+   "253": {
+      "Description": "Constipation"
+   },
+   "254": {
+      "Description": "Diarrhea"
+   },
+   "255": {
+      "Description": "Foreign body in rectum"
+   },
+   "256": {
+      "Description": "Groin pain/mass"
+   },
+   "257": {
+      "Description": "Nausea and/or vomiting"
+   },
+   "258": {
+      "Description": "Rectal/perineal pain"
+   },
+   "259": {
+      "Description": "Vomiting blood"
+   },
+   "260": {
+      "Description": "Blood in stool/melena"
+   },
+   "261": {
+      "Description": "Jaundice"
+   },
+   "262": {
+      "Description": "Hiccoughs"
+   },
+   "263": {
+      "Description": "Abdominal mass/distention"
+   },
+   "264": {
+      "Description": "Anal/rectal trauma"
+   },
+   "265": {
+      "Description": "Oral/esophageal foreign body"
+   },
+   "266": {
+      "Description": "Feeding difficulties in newborn"
+   },
+   "267": {
+      "Description": "Neonatal jaundice"
+   },
+   "301": {
+      "Description": "Flank pain"
+   },
+   "302": {
+      "Description": "Hematuria"
+   },
+   "303": {
+      "Description": "Genital discharge/lesion"
+   },
+   "304": {
+      "Description": "Penile swelling"
+   },
+   "305": {
+      "Description": "Scrotal pain and/or swelling"
+   },
+   "306": {
+      "Description": "Urinary retention"
+   },
+   "307": {
+      "Description": "UTI complaints"
+   },
+   "308": {
+      "Description": "Oliguria"
+   },
+   "309": {
+      "Description": "Polyuria"
+   },
+   "310": {
+      "Description": "Genital trauma"
+   },
+   "351": {
+      "Description": "Depression/suicidal/deliberate self-harm"
+   },
+   "352": {
+      "Description": "Anxiety/situational crisis"
+   },
+   "353": {
+      "Description": "Hallucinations/delusions"
+   },
+   "354": {
+      "Description": "Insomnia"
+   },
+   "355": {
+      "Description": "Violent/homicidal behaviour"
+   },
+   "356": {
+      "Description": "Social problem"
+   },
+   "358": {
+      "Description": "Bizarre behaviour"
+   },
+   "359": {
+      "Description": "Concern for patient’s welfare"
+   },
+   "360": {
+      "Description": "Pediatric disruptive behaviour"
+   },
+   "401": {
+      "Description": "Altered level of consciousness"
+   },
+   "402": {
+      "Description": "Confusion"
+   },
+   "403": {
+      "Description": "Vertigo"
+   },
+   "404": {
+      "Description": "Headache"
+   },
+   "405": {
+      "Description": "Seizure"
+   },
+   "406": {
+      "Description": "Gait disturbance/ataxia"
+   },
+   "407": {
+      "Description": "Head injury"
+   },
+   "408": {
+      "Description": "Tremor"
+   },
+   "409": {
+      "Description": "Extremity weakness/symptoms of CVA"
+   },
+   "410": {
+      "Description": "Sensory loss/paresthesia"
+   },
+   "411": {
+      "Description": "Floppy child"
+   },
+   "451": {
+      "Description": "Menstrual problems"
+   },
+   "452": {
+      "Description": "Foreign body, vagina"
+   },
+   "453": {
+      "Description": "Vaginal discharge"
+   },
+   "454": {
+      "Description": "Sexual assault"
+   },
+   "455": {
+      "Description": "Vaginal bleed"
+   },
+   "456": {
+      "Description": "Labial swelling"
+   },
+   "457": {
+      "Description": "Pregnancy issues, <20 weeks"
+   },
+   "458": {
+      "Description": "Pregnancy issues, >20 weeks"
+   },
+   "460": {
+      "Description": "Vaginal pain/dyspareunia"
+   },
+   "461": {
+      "Description": "Postpartum issues"
+   },
+   "502": {
+      "Description": "Chemical exposure, eye"
+   },
+   "503": {
+      "Description": "Foreign body, eye"
+   },
+   "504": {
+      "Description": "Visual disturbance"
+   },
+   "505": {
+      "Description": "Eye pain"
+   },
+   "506": {
+      "Description": "Red eye, discharge"
+   },
+   "507": {
+      "Description": "Photophobia"
+   },
+   "508": {
+      "Description": "Diplopia"
+   },
+   "509": {
+      "Description": "Periorbital swelling"
+   },
+   "510": {
+      "Description": "Eye trauma"
+   },
+   "511": {
+      "Description": "Re-check eye"
+   },
+   "551": {
+      "Description": "Back pain"
+   },
+   "552": {
+      "Description": "Traumatic back/spine injury"
+   },
+   "553": {
+      "Description": "Amputation"
+   },
+   "554": {
+      "Description": "Upper extremity pain"
+   },
+   "555": {
+      "Description": "Lower extremity pain"
+   },
+   "556": {
+      "Description": "Upper extremity injury"
+   },
+   "557": {
+      "Description": "Lower extremity injury"
+   },
+   "558": {
+      "Description": "Joint(s) swelling"
+   },
+   "559": {
+      "Description": "Pediatric gait disorder/painful walk"
+   },
+   "560": {
+      "Description": "Cast check"
+   },
+   "651": {
+      "Description": "Shortness of breath"
+   },
+   "652": {
+      "Description": "Respiratory arrest"
+   },
+   "653": {
+      "Description": "Cough/congestion"
+   },
+   "654": {
+      "Description": "Hyperventilation"
+   },
+   "655": {
+      "Description": "Hemoptysis"
+   },
+   "656": {
+      "Description": "Respiratory foreign body"
+   },
+   "657": {
+      "Description": "Allergic reaction"
+   },
+   "658": {
+      "Description": "Stridor"
+   },
+   "659": {
+      "Description": "Wheezing — no other complaints"
+   },
+   "660": {
+      "Description": "Apneic spells in infants"
+   },
+   "701": {
+      "Description": "Bite"
+   },
+   "702": {
+      "Description": "Sting"
+   },
+   "703": {
+      "Description": "Abrasion"
+   },
+   "704": {
+      "Description": "Laceration/puncture"
+   },
+   "705": {
+      "Description": "Burn"
+   },
+   "706": {
+      "Description": "Blood and body fluid exposure"
+   },
+   "707": {
+      "Description": "Pruritus"
+   },
+   "708": {
+      "Description": "Rash"
+   },
+   "709": {
+      "Description": "Localized swelling/redness"
+   },
+   "710": {
+      "Description": "Wound check"
+   },
+   "711": {
+      "Description": "Other skin conditions"
+   },
+   "712": {
+      "Description": "Lumps, bumps, calluses"
+   },
+   "713": {
+      "Description": "Redness/tenderness, breast"
+   },
+   "714": {
+      "Description": "Rule out infestation"
+   },
+   "715": {
+      "Description": "Cyanosis"
+   },
+   "716": {
+      "Description": "Spontaneous bruising"
+   },
+   "717": {
+      "Description": "Foreign body, skin"
+   },
+   "719": {
+      "Description": "Removal staples/sutures"
+   },
+   "751": {
+      "Description": "Substance misuse/intoxication"
+   },
+   "752": {
+      "Description": "Overdose ingestion"
+   },
+   "753": {
+      "Description": "Substance withdrawal"
+   },
+   "801": {
+      "Description": "Multisystem trauma — penetrating"
+   },
+   "802": {
+      "Description": "Multisystem trauma — blunt"
+   },
+   "803": {
+      "Description": "Isolated chest trauma — penetrating"
+   },
+   "804": {
+      "Description": "Isolated chest trauma — blunt"
+   },
+   "805": {
+      "Description": "Isolated abdominal trauma — penetrating"
+   },
+   "806": {
+      "Description": "Isolated abdominal trauma — blunt"
+   },
+   "851": {
+      "Description": "Exposure to communicable disease"
+   },
+   "852": {
+      "Description": "Fever"
+   },
+   "853": {
+      "Description": "Hyperglycemia"
+   },
+   "854": {
+      "Description": "Hypoglycemia"
+   },
+   "855": {
+      "Description": "Direct referral for consultation"
+   },
+   "856": {
+      "Description": "Dressing change"
+   },
+   "859": {
+      "Description": "Imaging test/blood test"
+   },
+   "860": {
+      "Description": "Medical device problem"
+   },
+   "861": {
+      "Description": "Prescription/medication request"
+   },
+   "862": {
+      "Description": "Ring removal"
+   },
+   "863": {
+      "Description": "Abnormal lab/imaging results"
+   },
+   "864": {
+      "Description": "Pallor/anemia"
+   },
+   "865": {
+      "Description": "Post-operative complications"
+   },
+   "866": {
+      "Description": "Minor complaints NOS"
+   },
+   "867": {
+      "Description": "Inconsolable crying"
+   },
+   "868": {
+      "Description": "Congenital problem in children"
+   },
+   "869": {
+      "Description": "Newly born"
+   },
+   "871": {
+      "Description": "Return visit for therapy"
+   },
+   "998": {
+      "Description": "Patient registered and left prior to triage*"
+   },
+   "999": {
+      "Description": "Unknown*"
+   },
+   "001": {
+      "Description": "Cardiac arrest (non-traumatic)"
+   },
+   "002": {
+      "Description": "Cardiac arrest (traumatic)"
+   },
+   "003": {
+      "Description": "Chest pain — cardiac features"
+   },
+   "004": {
+      "Description": "Chest pain — non-cardiac features"
+   },
+   "005": {
+      "Description": "Palpitations/irregular heartbeat"
+   },
+   "006": {
+      "Description": "Hypertension"
+   },
+   "007": {
+      "Description": "General weakness"
+   },
+   "008": {
+      "Description": "Syncope/pre-syncope"
+   },
+   "009": {
+      "Description": "Edema, generalized"
+   },
+   "010": {
+      "Description": "Leg swelling/edema"
+   },
+   "011": {
+      "Description": "Cool pulseless limb"
+   },
+   "012": {
+      "Description": "Unilateral reddened hot limb"
+   },
+   "051": {
+      "Description": "Earache"
+   },
+   "052": {
+      "Description": "Foreign body, ear"
+   },
+   "053": {
+      "Description": "Loss of hearing"
+   },
+   "054": {
+      "Description": "Tinnitus"
+   },
+   "055": {
+      "Description": "Discharge, ear"
+   },
+   "056": {
+      "Description": "Ear injury"
+   }
+}

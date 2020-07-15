@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Gabriele Calarota">
+    <meta name="keywords " content="HTML, CSS, Python, MySQL, Unibo, Montesi, Gabriele, Calarota">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/stile.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+    </header>
+    <main class="grey lighten-4">
+        <!--<nav id="titolo" class="scrollspy icd-color">
+            <div class="nav-wrapper">
+                <a href="#" id="page-title" class="brand-logo flow-text">
+                    <nobr>Search Engine</nobr>
+                </a>
+                <ul id="slide-out" class="side-nav fixed">
+                    <li>
+                        <div class="userView">
+                            <div class="background">
+                                <img id="logo" src="Logo.png">
+                            </div>
+                        </div>
+                    </li>
+                    <div class="divider"></div> -->
+                    <!--<li>
+                        <a id="logButton" href="#login" class="waves-effect modal-trigger scale-transition scale-in"><i class="material-icons">person</i><span id="logButton-content"></span></a>
+                    </li>
+                    <ul class="collapsible collapsible-accordion scale-transition scale-out" id="col">
+                        <li>
+                            <a id="nUtente" class="collapsible-header waves-effect"><i class='material-icons'>person</i><i class='right material-icons'>arrow_drop_down</i><span id="user-title"></span><span id="user-id"></span></a>
+                            <div id="userInfo" class="collapsible-body transparent">
+                                <ul>
+                                    <li>
+                                        <a href="#changePsw" class="waves-effect modal-trigger"><i class="left material-icons">build</i><span id="change"></span></a>
+                                    </li>
+                                    <li>
+                                        <a id="logout" class="waves-effect"><i class="left material-icons">exit_to_app</i><span id="exit"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="#contattaci" class="waves-effect modal-trigger"><i class="material-icons">record_voice_over</i><span id="contactButton"></span></a>
+                    </li> -->
+                    <!--<ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header waves-effect" style="padding: 0 32;"><i class="material-icons">language</i><span id="languageButton"></span> <i class="material-icons right">arrow_drop_down</i></a>
+                            <div id="languages" class="collapsible-body transparent">
+                                <ul>
+                                    <li><a class="waves-effect langSelector" id="itLang">Italiano</a></li>
+                                    <li><a class="waves-effect langSelector" id="enLang">English</a></li>
+                                    <li>
+                                        <div class="divider"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul> -->
+                    <!--<li id="aiuto">
+                        <a onclick="aiuto()" class="waves-effect"><i class="material-icons">help</i><span id="help"></span></a>
+                    </li> -->
+                <!--</ul>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav> -->
+        <nav id="search-bar">
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field icd-color">
+                        <input id="search" type="search" required autocomplete="off" placeholder="Esempio: Trauma nasale">
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons" onclick="$('#search').val('').focus()">close</i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <div id="result">
+            <div id="preloader" class="center">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-green-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="home" class="grey-text text-darken-4 scale-transition scale-in">
+                <h1 id="welcome-title"> </h1>
+                <div class="divider"></div>
+                <p id="welcome-body" class="flow-text"> </p>
+            </div>
+            <form method="post" id="codesForm">
+
+            </form>
+        </div>
+
+        <!--
+
+        <div id="contattaci" class="modal bottom-sheet modal-fixed-footer">
+            <div class="modal-content">
+                <form id="f-contattaci">
+                    <h4 id="contactLabel"></h4>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix"> question_answer </i>
+                            <textarea id="c-area" class="materialize-textarea" required></textarea>
+                            <label id="problem-label" for="c-area"> </label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <i class="material-icons prefix"> email </i>
+                            <input id="email" type="email" name="email" class="validate" autocomplete="off" required>
+                            <label for="email"> e-mail </label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <i class="material-icons prefix"> account_circle </i>
+                            <input id="nome" type="text" name="name" class="validate" autocomplete="off" required>
+                            <label id="problem-name" for="nome"> </label>
+                        </div>
+                    </div>
+                </form>
+                <p id="problem-info"></p>
+            </div>
+            <div class="modal-footer icd-color z-depth-5">
+                <button form="f-contattaci" id="contatta" type="submit" class="modal-action light-green darken-4 white-text waves-effect btn-flat"> </button>
+            </div>
+        </div>
+
+        <div id="login" class="modal bottom-sheet modal-fixed-footer">
+            <div class="modal-content">
+                <form id="log">
+                    <h4>Login</h4>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="nome_utente" type="text" name="n-utente" class="validate">
+                            <label for="nome_utente"><span id="login-user"></span></label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="password" type="password" name="psw" class="validate">
+                            <label for="password"><span id="login-psw"></span></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer icd-color z-depth-5">
+                <a id="accedi" class="modal-action light-green darken-4 white-text waves-effect btn-flat submit"><span id="login-btn"></span></a>
+            </div>
+        </div> -->
+        <!--
+        <div id="changePsw" class="modal bottom-sheet modal-fixed-footer">
+            <div class="modal-content">
+                <form id="cPswForm">
+                    <h4 id="changePasswordLabel"></h4>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l4">
+                            <i class="material-icons prefix">lock_open</i>
+                            <input id="old-psw" type="password" name="old-psw" class="validate" required>
+                            <label for="old-psw"><span id="psw-actually"></span></label>
+                        </div>
+                        <div class="input-field col s12 m6 l4">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="new-psw" type="password" name="new-psw" class="validate" required>
+                            <label for="new-psw"><span id="psw-new"></span></label>
+                        </div>
+                        <div class="input-field col s12 m6 l4">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="new-psw2" type="password" name="new-psw2" class="validate" required>
+                            <label for="new-psw2"><span id="psw-new2"></span></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer icd-color z-depth-5">
+                <button type="submit" id="changePasswd" form="cPswForm" class="modal-action light-green darken-4 white-text waves-effect btn-flat"><span id="confirmChangeButton"></span></button>
+            </div>
+        </div> -->
+
+        <div id="code-wrapper" class="fixed-action-btn scale-transition scale-out">
+            <a id="codeCopy" class="btn-floating btn-large blue lighten-1 right tooltipped waves-effect disabled" data-position="left" data-delay="1000" data-tooltip="Invia  e copia codici selezionati">
+                <i class="material-icons">content_copy</i>
+            </a>
+            <ul>
+                <li>
+                    <a href="#titolo" class="btn-floating icd-color"><i class="material-icons">keyboard_arrow_up</i></a>
+                </li>
+            </ul>
+        </div>
+        <div id="codeSelected" class="input-field fixed-action-btn">
+            <input id="codes" class="right grey darken-2 white-text scale-transition scale-out" type="text" autocomplete="off">
+        </div>
+
+    </main>
+    <footer class="page-footer icd-color">
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="left">
+                    <script>
+                        /*var CurrentYear = new Date().getFullYear()
+                        document.write("© " + CurrentYear + " SmartData");*/
+
+                    </script>
+                </span>
+                <span class="right">
+                    <!--ICD Code It Project-->
+                </span>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+</body>
+
+</html>
