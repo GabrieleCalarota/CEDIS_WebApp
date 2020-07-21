@@ -1,5 +1,6 @@
 var pushObj, setRicerca, getRicerca, getRequestID, setRequestID, getResHide, setResHide, getUserID, setUserID,
     setSelection, getSelection, flagA = 0;
+var timerSearch;
 var UsedLang;
 var language = {
     "en": {
@@ -117,10 +118,13 @@ function filterCodes(data, filter){
     const searchRegEx = new RegExp(regexStr, 'gi');
     result = {}
     console.log(filter);
+    $("#codesForm").show();
     for (var code in data) {
         var description = data[code]['Description'];
         //console.log(description);
         //console.log(words);
+        var $li = $("li[code='"+code+"']");
+        //console.log($li);
         if (description.toLowerCase().match(searchRegEx)){
             //console.log("Description "+description+" Code "+code);
             //$label = $("label[for='" + code + "']");
@@ -129,8 +133,14 @@ function filterCodes(data, filter){
             //$li.hide();
             result[code]= { 'Description': description};
             //console.log(description);
+            $li.show();
+            //console.log(description);
+            //console.log($li);
+        }else{
+            $li.hide();
         }
     }
+    //$("#codesForm").show();
     //console.log(filter);
     //console.log(result);
     return result;
@@ -147,8 +157,9 @@ function getCodes(filter){
         $("#preloader").fadeOut(function () {
             if (filter){
                 data = filterCodes(data, filter);
+            } else {
+                setResult(data);
             }
-            setResult(data);
         });
     });
 }
@@ -399,7 +410,7 @@ function sort(level0) {
 
 
 function annidate(obj, level) {
-    var $li = $("<li class='list-" + level + "'></li>");
+    var $li = $("<li class='list-" + level + "' code='"+obj.code+"'></li>");
     var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
     var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>: " + obj.code + " </label>");
     $li.append($checkbox);
@@ -835,14 +846,18 @@ $(document).ready(function () {
     $('.scrollspy').scrollSpy();
     refreshUser();
     //checkUser(1);
-    $("#search").keypress(function (e) {
-        var string = $("#search").val();
-        getCodes(string);
-
-        if (e.keyCode == 13) {
+    $("#search").on("keypress", function(e){
+        if (e.keyCode == 13){
             e.preventDefault();
-            //getCodes(string);
+            return false;
         }
+    })
+    $("#search").on("keyup", function (e) {
+        clearTimeout(timerSearch);
+        timerSearch = setTimeout(function() {
+            var string = $("#search").val();
+            getCodes(string);
+        }, 250);
     });
     if ($(window).width() <= 600) {
         $('#search-bar').pushpin({
@@ -891,7 +906,8 @@ $(document).ready(function () {
     }
 
     $(document).on("click tap", "#codesForm input:checkbox", function (e) {
-        var $label = $("label[for='" + $(this).attr("id") + "']");
+        var code = $(this).attr("id");
+        var $label = $("label[for='" + code + "']");
         var level = getLevelFromLabel($label);
         if ($label.hasClass("active")) {
             if (getSelection()){
@@ -916,6 +932,7 @@ $(document).ready(function () {
             deSelectLabel($label, level);
         }
         stampa();
+        //copyCode(code);
     });
 
     $(document).on("click", "label i", function (e) {
@@ -938,11 +955,25 @@ $(document).ready(function () {
         return false;
     });
 
+    async function copyCode(code) {
+        if (!code){
+            code = $("#codes").val();
+        }
+        //var codes = $("#codes").val();
+        //$codes.select();
+        //document.execCommand('copy');
+
+        navigator.clipboard.writeText(code).then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
+    }
+
     $("#codeCopy").on("click", function () {
-        $("#codes").select();
-        document.execCommand('copy');
+        copyCode();
         //sendSelection(getSelectionData());
-        flagA = 0;
+        //flagA = 0;
     });
 
     logged(undefined);
