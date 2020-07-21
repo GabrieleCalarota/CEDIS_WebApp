@@ -113,22 +113,22 @@ function filterCodes(data, filter){
     if (!filter){
         return data;
     }
-    var words = filter.split(" ");
-    var regex = new RegExp( words.join( "|" ), "i");
+    const regexStr = '(?=.*' + filter.split(/\,|\s/).join(')(?=.*') + ')';
+    const searchRegEx = new RegExp(regexStr, 'gi');
     result = {}
-    console.log(words)
+    console.log(filter);
     for (var code in data) {
         var description = data[code]['Description'];
         //console.log(description);
         //console.log(words);
-        if (regex.test(description.toLowerCase())){
+        if (description.toLowerCase().match(searchRegEx)){
             //console.log("Description "+description+" Code "+code);
             //$label = $("label[for='" + code + "']");
             //$li = $label.parent("li");
             //console.log($li)
             //$li.hide();
             result[code]= { 'Description': description};
-            console.log(description);
+            //console.log(description);
         }
     }
     //console.log(filter);
