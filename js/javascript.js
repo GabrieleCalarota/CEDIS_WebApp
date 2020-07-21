@@ -1,6 +1,7 @@
 var pushObj, setRicerca, getRicerca, getRequestID, setRequestID, getResHide, setResHide, getUserID, setUserID,
     setSelection, getSelection, flagA = 0;
 var timerSearch;
+var timerCopy;
 var UsedLang;
 var language = {
     "en": {
@@ -663,7 +664,7 @@ function search(elem, array, remove) {
     }
 }
 
-function stampa() {
+async function stampa() {
     var codeListTemp = getSelectionData();
     var val = "";
     for (var i = 0; i < codeListTemp.length - 1; i++) {
@@ -931,8 +932,11 @@ $(document).ready(function () {
         } else {
             deSelectLabel($label, level);
         }
-        stampa();
-        //copyCode(code);
+        clearTimeout(timerCopy);
+        timerCopy = setTimeout(function() {
+            stampa();
+            copyCode(code);
+        }, 500);
     });
 
     $(document).on("click", "label i", function (e) {
