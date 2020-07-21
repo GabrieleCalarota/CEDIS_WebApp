@@ -116,18 +116,19 @@ function filterCodes(data, filter){
     var words = filter.split(" ");
     var regex = new RegExp( words.join( "|" ), "i");
     result = {}
+    console.log(words)
     for (var code in data) {
         var description = data[code]['Description'];
         //console.log(description);
         //console.log(words);
-        if (!regex.test(description.toLowerCase())){
+        if (regex.test(description.toLowerCase())){
             //console.log("Description "+description+" Code "+code);
-            $label = $("label[for='" + code + "']");
-            $li = $label.parent("li");
-            console.log($li)
-            $li.hide();
-        } else{
+            //$label = $("label[for='" + code + "']");
+            //$li = $label.parent("li");
+            //console.log($li)
+            //$li.hide();
             result[code]= { 'Description': description};
+            console.log(description);
         }
     }
     //console.log(filter);
@@ -146,9 +147,8 @@ function getCodes(filter){
         $("#preloader").fadeOut(function () {
             if (filter){
                 data = filterCodes(data, filter);
-            } else {
-                setResult(data);
             }
+            setResult(data);
         });
     });
 }
