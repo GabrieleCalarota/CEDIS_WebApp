@@ -118,27 +118,40 @@ function filterCodes(data, filter){
     const regexStr = '(?=.*' + filter.split(/\,|\s/).join(')(?=.*') + ')';
     const searchRegEx = new RegExp(regexStr, 'gi');
     result = {}
-    console.log(filter);
+    //console.log(filter);
     $("#codesForm").show();
-    for (var code in data) {
-        var description = data[code]['Description'];
-        //console.log(description);
-        //console.log(words);
-        var $li = $("li[code='"+code+"']");
-        //console.log($li);
-        if (description.toLowerCase().match(searchRegEx)){
-            //console.log("Description "+description+" Code "+code);
-            //$label = $("label[for='" + code + "']");
-            //$li = $label.parent("li");
-            //console.log($li)
-            //$li.hide();
-            result[code]= { 'Description': description};
+    $("#codesForm li.list-0").hide();
+    for (var class_name in data) {
+        var objects = data[class_name]
+        for (var code in objects) {
+            var description = objects[code]['Description'];
             //console.log(description);
-            $li.show();
-            //console.log(description);
+            //console.log(words);
+            var $li = $("li[code='" + code + "']");
+            var $li_parent = $li.parents("li");
             //console.log($li);
-        }else{
-            $li.hide();
+            if (description.toLowerCase().match(searchRegEx)) {
+                //console.log("Description "+description+" Code "+code);
+                //$label = $("label[for='" + code + "']");
+                //$li = $label.parent("li");
+                //console.log($li)
+                //$li.hide();
+                result[code] = {'Description': description};
+                //console.log(description);
+                $li.show();
+                $li_parent.show();
+                //console.log($li);
+            } else {
+                $li.hide();
+                //var $children = $li_parent.find("li");
+                //console.log($children.css('display')=='none');
+                //$li_parent.hide();
+                /*$children.each(function(i, obj){
+                   if (obj.style['display']){
+                       $li_parent.show();
+                   }
+                });*/
+            }
         }
     }
     //$("#codesForm").show();
@@ -150,9 +163,9 @@ function filterCodes(data, filter){
 function getCodes(filter){
     $("#home").hide();
     $("#preloader").fadeIn();
-    var ric = $("#search").val();
+    //var ric = $("#search").val();
     $("#codesForm").slideUp(100, "swing");
-    $("#codes").val("");
+    //$("#codes").val("");
     $.getJSON( "NACRSv5.1.json", function( data ) {
         refreshVar();
         $("#preloader").fadeOut(function () {
@@ -217,112 +230,24 @@ function getCodes(ric, sF, flag) {
     })
 }*/
 
-/*
-function createDictionary(result) {
-    level0 = {} //DIZIONARIO PRESUNTI PADRI-ROOT
-    var level1 = {} //DIZIONARIO PRESUNTI FIGLI
-    var level2 = {} //DIZIONARIO PRESUNTI NIPOTI
-    for (var code in result) {
-        switch ((result[code].cod).length) {
-            case 3:
-                level0[result[code].cod] = {};
-                level0[result[code].cod].sum = parseFloat(result[code].score);
-                level0[result[code].cod].count = 1;
-                level0[result[code].cod].code = result[code].cod;
-                level0[result[code].cod].name = result[code].name;
-                level0[result[code].cod].score = parseFloat(result[code].score);
-                break;
-            case 4:
-                level1[result[code].cod] = {};
-                level1[result[code].cod].score = parseFloat(result[code].score);
-                level1[result[code].cod].name = result[code].name;
-                break;
-            case 5:
-                level2[result[code].cod] = {}
-                level2[result[code].cod].score = parseFloat(result[code].score);
-                level2[result[code].cod].name = result[code].name;
-                break;
-        }
-    }
-    //CICLO SUI LEVEL1, QUINDI POSSIBILI FIGLI
-    $.each(level1, function (key, value) {
-        var padre = key.substring(0, 3);
-        if (padre in level0) { //SE ESISTE IL PADRE, INSERISCO QUESTO COME FIGLIO
-            level0[padre].figli = level0[padre].figli || {};
-            level0[padre].figli[key] = {}
-            level0[padre].figli[key].code = key;
-            level0[padre].figli[key].name = level1[key].name;
-            level0[padre].figli[key].score = level1[key].score;
-            level0[padre].sum += level1[key].score;
-            level0[padre].count += 1;
-        } else {
-            level0[key] = {}; //ALTRIMENTI LO INSERISCO COME PADRE-ROOT
-            level0[key].code = key;
-            level0[key].sum = level1[key].score;
-            level0[key].name = level1[key].name;
-            level0[key].score = level1[key].score;
-            level0[key].count = 1;
-        }
-    })
-    //for (var l2 in level2) { //CICLO SUI LEVEL2, QUINDI POSSIBILI NIPOTI
-    $.each(level2, function (key, value) {
-        var nonno = key.substring(0, 3);
-        var padre = key.substring(0, 4);
-        if (nonno in level0) { //SE ESISTE IL NONNO
-            level0[nonno].sum += level2[key].score;
-            level0[nonno].count += 1;
-            level0[nonno].figli = level0[nonno].figli || {}
-            if (padre in level0[nonno].figli) { //SE ESISTE IL PADRE LO APPENDO COME NIPOTE
-                level0[nonno].figli[padre].figli = level0[nonno].figli[padre].figli || {};
-                level0[nonno].figli[padre].figli[key] = {};
-                level0[nonno].figli[padre].figli[key].code = key;
-                level0[nonno].figli[padre].figli[key].name = level2[key].name;
-                level0[nonno].figli[padre].figli[key].score = level2[key].score;
-            } else { //SE NON ESISTE IL PADRE DENTRO AL NONNO LO INSERISCO ALLO STESSO LIVELLO DEGLI "ZII"
-                level0[nonno].figli[key] = {};
-                level0[nonno].figli[key].code = key;
-                level0[nonno].figli[key].name = level2[key].name;
-                level0[nonno].figli[key].score = level2[key].score;
-            }
-        } else if (padre in level0) { //SE ESISTE IL PADRE MA NON IL NONNO LO APPENDO COME FIGLIO
-            level0[padre].sum += level2[key].score;
-            level0[padre].count += 1;
-            level0[padre].figli = level0[padre].figli || {};
-            level0[padre].figli[key] = {};
-            level0[padre].figli[key].code = key;
-            level0[padre].figli[key].name = level2[key].name;
-            level0[padre].figli[key].score = level2[key].score;
-        } else { //SE NON ESISTONO NE IL PADRE NE IL NONNO LO APPENDO COME FRATELLO DEI NONNI
-            level0[key] = {};
-            level0[key].sum = level2[key].score;
-            level0[key].count = 1;
-            level0[key].code = key;
-            level0[key].name = level2[key].name;
-            level0[key].score = level2[key].score;
-        }
-    })
-
-    $.each(level0, function (key, value) {
-        level0[key].avg = level0[key].sum / level0[key].count;
-    })
-
-    //setResult(result);
-    console.log(level0);
-    //console.log(order);
-    return level0;
-}*/
-
 function createDictionary(result){
     level0 = {} //DIZIONARIO PRESUNTI PADRI-ROOT
     //var level1 = {} //DIZIONARIO PRESUNTI FIGLI
     //var level2 = {} //DIZIONARIO PRESUNTI NIPOTI
-    for (var code in result) {
-        level0[code] = {};
-        var temp = level0[code];
-        temp.count = 1;
-        temp.code = code;
-        temp.name = result[code]['Description'];
-        temp.code_int = parseInt(code);
+    for (var class_name in result) {
+        level0[class_name] = {};
+        var level1 = {};
+        var result2 = result[class_name];
+        for (var code in result2) {
+            var temp = {}
+            temp.count = 1;
+            temp.code = code;
+            temp.class = class_name;
+            temp.name = result2[code]['Description'];
+            temp.code_int = parseInt(code);
+            level1[code] = temp;
+        }
+        level0[class_name].figli = level1;
     }
 
     /*
@@ -410,30 +335,39 @@ function sort(level0) {
 }*/
 
 
-function annidate(obj, level) {
-    var $li = $("<li class='list-" + level + "' code='"+obj.code+"'></li>");
-    var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
-    var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>: " + obj.code + " </label>");
-    $li.append($checkbox);
-    $li.append($label);
+function annidate(obj, level, description) {
+    if (level > 0) {
+        var $li = $("<li class='list-" + level + "' code='" + obj.code + "'></li>");
+        var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
+        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>: " + obj.code + " </label>");
+        $li.append($checkbox);
+        $li.append($label);
+    } else{
+        var $li = $("<li class='list-"+ level + "' id='"+description+"'>");
+        //var $checkbox = $("<input type='checkbox' />");
+        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + description + "' " +
+            "><b>" + description + "</b></label>");
+        //$li.append($checkbox);
+        $li.append($label);
+    }
     if (!("figli" in obj)) {
         return $li;
     } else {
-        var $i = $("<i class='circle material-icons right closed white grey-text tooltipped' data-position='left' data-delay='1000' data-tooltip='Espandi / riduci menu'>keyboard_arrow_down</i>");
+        var $i = $("<i class='circle material-icons right closed white grey-text tooltipped' data-position='left' " +
+            "data-delay='1000' data-tooltip='Espandi / riduci menu'>keyboard_arrow_down</i>");
         var $body = $("<div class='collapsible-body'></div>");
         var $ul = $("<ul class='collapsible popout' data-collapsible='expandable'></ul>");
         var nFigli = 0;
+        //$li.append($i);
         $label.append($i);
-        $label.append($span);
         $body.append($ul);
         $li.append($body);
-        level++;
         $.each(obj.figli, function (key, value) {
-            $ul.append(annidate(obj.figli[key], level));
+            $ul.append(annidate(obj.figli[key], level+1));
             nFigli++;
         })
-        var $span = $("<span class='right grey-text nAnnidamento'>" + nFigli + "</span>");
-        $label.append($span);
+        //var $span = $("<span class='right grey-text nAnnidamento'>" + nFigli + "</span>");
+        //$label.append($span);
     }
     return $li;
 }
@@ -622,16 +556,17 @@ function logout() {
 
 function setResult(result) {
     var level0 = createDictionary(result);
-    var order = sort(level0);
-    var $res = $("<ul class='collapsible popout' data-collapsible='expandable'></ul>");
+    var order = level0;
+    //var order = sort(level0);
+    var $res = $("<ul class='collapsible' data-collapsible='expandable'></ul>");
     //console.log(result);
     if (result.length == 0) {
         Materialize.toast(language[UsedLang]["toast"]["diagnosi-not-found"], 4000, "lime");
         $("#code-wrapper").addClass("scale-out");
     } else {
-        for (var code in order) {
-            var obj = level0[order[code]];
-            var li = annidate(obj, 1);
+        for (var key in order) {
+            var obj = level0[key];
+            var li = annidate(obj, 0, key);
             $res.append(li);
         }
         $("#codesForm").html($res);
@@ -821,12 +756,6 @@ function setLanguage(Lang) {
 }
 
 $(document).ready(function () {
-    $('.modal').modal({
-        complete: function () {
-            restoreLogin();
-            restoreChangePwd();
-        }
-    });
 
     $(".button-collapse").sideNav({
         closeOnClick: true,
@@ -898,7 +827,6 @@ $(document).ready(function () {
             $("#codeCopy").addClass("disabled");
             $("#codes").addClass("scale-out");
         }
-
     }
 
     function getLevelFromLabel($label) {
@@ -910,6 +838,9 @@ $(document).ready(function () {
         var code = $(this).attr("id");
         var $label = $("label[for='" + code + "']");
         var level = getLevelFromLabel($label);
+        if (level === 0){
+            return;
+        }
         if ($label.hasClass("active")) {
             if (getSelection()){
                 deSelectLabel(getSelection(), getLevelFromLabel(getSelection()));
