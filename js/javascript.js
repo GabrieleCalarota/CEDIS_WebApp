@@ -344,10 +344,12 @@ function annidate(obj, level, description) {
         $li.append($label);
     } else{
         var $li = $("<li class='list-"+ level + "' id='"+description+"'>");
-        //var $checkbox = $("<input type='checkbox' />");
+        var $checkbox = $("<input type='checkbox' />");
+        var name = description.replace(/[0-9(\-)]/, '');
+        var range_num = "[" + description.replace(/[^0-9\-]/gi, '') + "]";
         var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + description + "' " +
             "><b>" + description + "</b></label>");
-        //$li.append($checkbox);
+        $li.append($checkbox);
         $li.append($label);
     }
     if (!("figli" in obj)) {
@@ -360,6 +362,7 @@ function annidate(obj, level, description) {
         var nFigli = 0;
         //$li.append($i);
         $label.append($i);
+        //$label.append($span);
         $body.append($ul);
         $li.append($body);
         $.each(obj.figli, function (key, value) {
@@ -573,7 +576,18 @@ function setResult(result) {
         $("#codesForm").slideDown(500, "swing");
         $("#code-wrapper").removeClass("scale-out");
         //$("#search").blur();
-        $('.collapsible').collapsible();
+        $('.collapsible').collapsible({
+            onOpen: function (el) {
+                //console.log("opened");
+                //console.log(el.children("label").children("i"));
+                expand_or_collapse.call(el.children("label").children("i"))
+            },
+            onClose: function (el) {
+                //console.log("closed");
+                //console.log(el);
+                expand_or_collapse.call(el.children("label").children("i"))
+            }
+        });
         setRicerca();
     }
 }
@@ -755,6 +769,25 @@ function setLanguage(Lang) {
     }
 }
 
+function expand_or_collapse() {
+    if (!$(this).hasClass("closed")) {
+        $(this).html("keyboard_arrow_down");
+        $(this).parent().siblings("div").slideUp(300, "swing");
+    } else {
+        $(this).html("keyboard_arrow_up");
+        $(this).parent().siblings("div").slideDown(300, "swing");
+    }
+    $(this).toggleClass("closed open");
+    if (!$(this).parent().parent().hasClass("active")) {
+        $(this).parent().parent().addClass("active");
+        $(this).parent().addClass("active");
+    } else {
+        $(this).parent().parent().removeClass("active");
+        $(this).parent().removeClass("active");
+    }
+    return false;
+}
+
 $(document).ready(function () {
 
     $(".button-collapse").sideNav({
@@ -800,7 +833,7 @@ $(document).ready(function () {
         var lang = $(this).attr("id").substring(0, 2);
         setLanguage(lang);
         Cookies.set("language", lang);
-        $(".collapsible").collapsible("close", 0);
+        //$(".collapsible").collapsible("close", 0);
     })
 
     // Result
@@ -870,25 +903,11 @@ $(document).ready(function () {
         }, 500);
     });
 
-    $(document).on("click", "label i", function (e) {
-        if (!$(this).hasClass("closed")) {
-            $(this).html("keyboard_arrow_down");
-            $(this).parent().siblings("div").slideUp(300, "swing");
-        } else {
-            $(this).html("keyboard_arrow_up");
-            $(this).parent().siblings("div").slideDown(300, "swing");
-        }
-        $(this).toggleClass("closed open");
-        if (!$(this).parent().parent().hasClass("active")) {
-            $(this).parent().parent().addClass("active");
-            $(this).parent().addClass("active");
-        } else {
-            $(this).parent().parent().removeClass("active");
-            $(this).parent().removeClass("active");
-        }
+    /*$(document).on("click", "label i", function (e) {
+        expand_or_collapse.call(this);
         e.stopPropagation();
         return false;
-    });
+    });*/
 
     async function copyCode(code) {
         if (!code){
@@ -899,7 +918,7 @@ $(document).ready(function () {
         //document.execCommand('copy');
 
         navigator.clipboard.writeText(code).then(function() {
-            console.log('Async: Copying to clipboard was successful!');
+            //console.log('Async: Copying to clipboard was successful!');
         }, function(err) {
             console.error('Async: Could not copy text: ', err);
         });
