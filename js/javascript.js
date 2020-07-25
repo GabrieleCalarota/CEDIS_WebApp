@@ -157,6 +157,7 @@ function filterCodes(data, filter){
     //$("#codesForm").show();
     //console.log(filter);
     //console.log(result);
+    //expandAllCollapsible()
     return result;
 }
 
@@ -175,6 +176,9 @@ function getCodes(filter){
                 setResult(data);
             }
         });
+        if (filter){
+            expandAllCollapsible();
+        }
     });
 }
 
@@ -334,21 +338,38 @@ function sort(level0) {
     return order;
 }*/
 
+function expandAllCollapsible(){
+
+    //var instance = M.Collapsible.getInstance($('.collapsible'));
+    //instance.open();
+
+    //$(".collapsible").collapsible("open",0);
+}
+
+function collapseAllCollapsible(){
+    $('ul.collapsible').collapsible("close");
+}
 
 function annidate(obj, level, description) {
     if (level > 0) {
         var $li = $("<li class='list-" + level + "' code='" + obj.code + "'></li>");
         var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
-        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>: " + obj.code + " </label>");
+        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>" +
+            "<i class='right material-icons'>content_copy</i>  <span class='right'>" + obj.code + "</span> </label>");
+        //var $body = $("<div class='collapsible-body'></div>");
         $li.append($checkbox);
         $li.append($label);
+        //$li.append($body);
     } else{
         var $li = $("<li class='list-"+ level + "' id='"+description+"'>");
         var $checkbox = $("<input type='checkbox' />");
-        var name = description.replace(/[0-9(\-)]/, '');
-        var range_num = "[" + description.replace(/[^0-9\-]/gi, '') + "]";
+        var name = description.replace(/\([0-9]{3}-[0-9]{3}\)/g, '');
+        //console.log(description);
+        //console.log(name);
+        var range_num = description.replace(name, '').replace("(", "[").replace(")", "]");
         var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + description + "' " +
-            "><b>" + description + "</b></label>");
+            "><b>" + name + "</b></label>");
+        var $span = $("<span class='right'>"+range_num+"</span>");
         $li.append($checkbox);
         $li.append($label);
     }
@@ -579,13 +600,18 @@ function setResult(result) {
         $('.collapsible').collapsible({
             onOpen: function (el) {
                 //console.log("opened");
-                //console.log(el.children("label").children("i"));
-                expand_or_collapse.call(el.children("label").children("i"))
+                //console.log(el.children("label").children("i.tooltipped").length);
+                if (el.children("label").children("i.tooltipped").length > 0) {
+                    expand_or_collapse.call(el.children("label").children("i.tooltipped"))
+                }
             },
             onClose: function (el) {
                 //console.log("closed");
-                //console.log(el);
-                expand_or_collapse.call(el.children("label").children("i"))
+                //console.log(el.children("label").children("i.tooltipped"));
+                //console.log(el.children("label").children("i.tooltipped").length);
+                if (el.children("label").children("i.tooltipped").length > 0) {
+                    expand_or_collapse.call(el.children("label").children("i.tooltipped"))
+                }
             }
         });
         setRicerca();
@@ -618,10 +644,10 @@ async function stampa() {
     var val = "";
     for (var i = 0; i < codeListTemp.length - 1; i++) {
         if (codeListTemp[i] != undefined)
-            val += codeListTemp[i].cod + ", ";
+            val += sugarCode(codeListTemp[i].cod) + ", ";
     }
     if (codeListTemp[i] != undefined)
-        val += codeListTemp[i].cod;
+        val += sugarCode(codeListTemp[i].cod);
     $("#codes").val(val);
 }
 
@@ -770,12 +796,16 @@ function setLanguage(Lang) {
 }
 
 function expand_or_collapse() {
+    //console.log($(this));
     if (!$(this).hasClass("closed")) {
         $(this).html("keyboard_arrow_down");
         $(this).parent().siblings("div").slideUp(300, "swing");
-    } else {
+    } else if (!$(this).hasClass("open")) {
         $(this).html("keyboard_arrow_up");
         $(this).parent().siblings("div").slideDown(300, "swing");
+    } else{
+        console.error("this has no class closed or open");
+        return false;
     }
     $(this).toggleClass("closed open");
     if (!$(this).parent().parent().hasClass("active")) {
@@ -788,12 +818,16 @@ function expand_or_collapse() {
     return false;
 }
 
+function sugarCode(code){
+    return "#"+code+"#";
+}
+
 $(document).ready(function () {
 
-    $(".button-collapse").sideNav({
+    /*$(".button-collapse").sideNav({
         closeOnClick: true,
         draggable: true
-    });
+    });*/
     var lang = navigator.language || navigator.userLanguage
     cookieLang = Cookies.get("language");
     if (cookieLang != undefined) {
@@ -843,7 +877,7 @@ $(document).ready(function () {
         $label.removeClass("active");
         $label.parent().removeClass("active");
         $label.children("span").removeClass("white-text");
-        $label.find("i")
+        $label.find("i.tooltipped")
             .html("keyboard_arrow_down")
             .removeClass("open")
             .addClass("closed");
@@ -881,7 +915,7 @@ $(document).ready(function () {
             setSelection($label);
             $label.addClass("selected");
             $label.children("span").addClass("white-text");
-            $label.find("i")
+            $label.find("i.tooltipped")
                 .html("keyboard_arrow_up")
                 .removeClass("closed")
                 .addClass("open");
@@ -916,6 +950,8 @@ $(document).ready(function () {
         //var codes = $("#codes").val();
         //$codes.select();
         //document.execCommand('copy');
+
+        code = sugarCode(code);
 
         navigator.clipboard.writeText(code).then(function() {
             //console.log('Async: Copying to clipboard was successful!');

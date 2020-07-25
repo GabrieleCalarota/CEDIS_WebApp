@@ -37,7 +37,7 @@
          "Description": "Unilateral reddened hot limb"
       }
    },
-   "ENT — Ears (051–100)": {
+   "ENT — Ears (051-100)": {
       "051": {
          "Description": "Earache"
       },
@@ -57,7 +57,7 @@
          "Description": "Ear injury"
       }
    },
-   "ENT — Mouth, Throat, Neck (101–150)": {
+   "ENT — Mouth, Throat, Neck (101-150)": {
       "101": {
          "Description": "Dental/gum problem"
       },
@@ -80,7 +80,7 @@
          "Description": "Facial pain (non-traumatic/non-dental)"
       }
    },
-   "ENT — Nose (151–200)": {
+   "ENT — Nose (151-200)": {
       "151": {
          "Description": "Epistaxis"
       },
@@ -97,7 +97,7 @@
          "Description": "Nasal trauma"
       }
    },
-   "Environmental (201–250)": {
+   "Environmental (201-250)": {
       "201": {
          "Description": "Frostbite/cold injury"
       },
@@ -120,7 +120,7 @@
          "Description": "Heat-related issue"
       }
    },
-   "Gastrointestinal (251–300)": {
+   "Gastrointestinal (251-300)": {
       "251": {
          "Description": "Abdominal pain"
       },
@@ -173,7 +173,7 @@
          "Description": "Neonatal jaundice"
       }
    },
-   "Genitourinary (301–350)": {
+   "Genitourinary (301-350)": {
       "301": {
          "Description": "Flank pain"
       },
@@ -205,7 +205,7 @@
          "Description": "Genital trauma"
       }
    },
-   "Mental Health (351–400)": {
+   "Mental Health (351-400)": {
       "351": {
          "Description": "Depression/suicidal/deliberate self-harm"
       },
@@ -234,7 +234,7 @@
          "Description": "Pediatric disruptive behaviour"
       }
    },
-   "Neurologic (401–450)": {
+   "Neurologic (401-450)": {
       "401": {
          "Description": "Altered level of consciousness"
       },
@@ -269,7 +269,7 @@
          "Description": "Floppy child"
       }
    },
-   "OB/GYN (451–500)": {
+   "OB/GYN (451-500)": {
       "451": {
          "Description": "Menstrual problems"
       },
@@ -301,7 +301,7 @@
          "Description": "Postpartum issues"
       }
    },
-   "Ophthalmology (501–550)": {
+   "Ophthalmology (501-550)": {
       "502": {
          "Description": "Chemical exposure, eye"
       },
@@ -333,7 +333,7 @@
          "Description": "Re-check eye"
       }
    },
-   "Orthopedic (551–600)": {
+   "Orthopedic (551-600)": {
       "551": {
          "Description": "Back pain"
       },
@@ -365,7 +365,7 @@
          "Description": "Cast check"
       }
    },
-   "Respiratory (651–700)": {
+   "Respiratory (651-700)": {
       "651": {
          "Description": "Shortness of breath"
       },
@@ -397,7 +397,7 @@
          "Description": "Apneic spells in infants"
       }
    },
-   "Skin (701–750)": {
+   "Skin (701-750)": {
       "701": {
          "Description": "Bite"
       },
@@ -453,7 +453,7 @@
          "Description": "Removal staples/sutures"
       }
    },
-   "Substance Misuse (751–800)": {
+   "Substance Misuse (751-800)": {
       "751": {
          "Description": "Substance misuse/intoxication"
       },
@@ -464,7 +464,7 @@
          "Description": "Substance withdrawal"
       }
    },
-   "Trauma (801–850)": {
+   "Trauma (801-850)": {
       "801": {
          "Description": "Multisystem trauma — penetrating"
       },
@@ -484,7 +484,7 @@
          "Description": "Isolated abdominal trauma — blunt"
       }
    },
-   "General and Minor (851–900)": {
+   "General and Minor (851-900)": {
       "851": {
          "Description": "Exposure to communicable disease"
       },
@@ -540,7 +540,7 @@
          "Description": "Return visit for therapy"
       }
    },
-   "Report Only (950-1000)": {
+   "Report Only (951-999)": {
       "998": {
          "Description": "Patient registered and left prior to triage*"
       },
