@@ -343,11 +343,16 @@ function expandAllCollapsible(){
     //var instance = M.Collapsible.getInstance($('.collapsible'));
     //instance.open();
 
-    //$(".collapsible").collapsible("open",0);
+    $(".collapsible-header.class-description").addClass("active");
+    $(".collapsible.class-description").collapsible({accordion: false});
 }
 
 function collapseAllCollapsible(){
-    $('ul.collapsible').collapsible("close");
+    $(".collapsible.class-description").removeClass(function(){
+        return "active";
+    });
+    $(".collapsible.class-description").collapsible({accordion: true});
+    $(".collapsible.class-description").collapsible({accordion: false});
 }
 
 function annidate(obj, level, description) {
@@ -367,7 +372,7 @@ function annidate(obj, level, description) {
         //console.log(description);
         //console.log(name);
         var range_num = description.replace(name, '').replace("(", "[").replace(")", "]");
-        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + description + "' " +
+        var $label = $("<label class='collapsible-header class-description grey-text text-darken-3' for='" + description + "' " +
             "><b>" + name + "</b></label>");
         var $span = $("<span class='right'>"+range_num+"</span>");
         $li.append($checkbox);
@@ -383,7 +388,7 @@ function annidate(obj, level, description) {
         var nFigli = 0;
         //$li.append($i);
         $label.append($i);
-        //$label.append($span);
+        $label.append($span);
         $body.append($ul);
         $li.append($body);
         $.each(obj.figli, function (key, value) {
@@ -582,7 +587,7 @@ function setResult(result) {
     var level0 = createDictionary(result);
     var order = level0;
     //var order = sort(level0);
-    var $res = $("<ul class='collapsible' data-collapsible='expandable'></ul>");
+    var $res = $("<ul class='collapsible class-description' data-collapsible='expandable'></ul>");
     //console.log(result);
     if (result.length == 0) {
         Materialize.toast(language[UsedLang]["toast"]["diagnosi-not-found"], 4000, "lime");
