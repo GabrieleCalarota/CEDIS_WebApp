@@ -1,515 +1,551 @@
 {
-    "1": {
-        "Description": "Arresto cardiaco non traumatico"
-    },
-    "2": {
-        "Description": "Arresto cardiaco traumatico"
-    },
-    "3": {
-        "Description": "Dolore toracico di sospetta causa cardio-vascolare"
-    },
-    "4": {
-        "Description": "Dolore toracico non sospetto per causa cardio-vascolare"
-    },
-    "5": {
-        "Description": "Cardiopalmo/polso irregolare"
-    },
-    "6": {
-        "Description": "Ipertensione"
-    },
-    "7": {
-        "Description": "Astenia generalizzata"
-    },
-    "8": {
-        "Description": "Sincope/pre-sincope"
-    },
-    "9": {
-        "Description": "Edema generalizzato"
-    },
-    "10": {
-        "Description": "Gamba gonfia/edematosa"
-    },
-    "11": {
-        "Description": "Arto freddo e senza polso"
-    },
-    "12": {
-        "Description": "Arto caldo e arrossato"
-    },
-    "51": {
-        "Description": "Otalgia"
-    },
-    "52": {
-        "Description": "Corpo estraneo condotto uditivo esterno"
-    },
-    "53": {
-        "Description": "Perdita dell\u2019udito"
-    },
-    "54": {
-        "Description": "Acufeni"
-    },
-    "55": {
-        "Description": "Otorrea"
-    },
-    "56": {
-        "Description": "Trauma dell\u2019orecchio"
-    },
-    "101": {
-        "Description": "Odontalgia/problemi gengivali"
-    },
-    "102": {
-        "Description": "Trauma facciale"
-    },
-    "103": {
-        "Description": "Faringodinia"
-    },
-    "104": {
-        "Description": "Gonfiore/dolore al collo"
-    },
-    "105": {
-        "Description": "Trauma del collo"
-    },
-    "106": {
-        "Description": "Disturbi alla deglutizione/disfagia"
-    },
-    "107": {
-        "Description": "Dolore al volto (in assenza di traumi o problemi odontoiatrici)"
-    },
-    "151": {
-        "Description": "Epistassi"
-    },
-    "152": {
-        "Description": "Congestione nasale, rinite allergica"
-    },
-    "153": {
-        "Description": "Corpo estraneo naso"
-    },
-    "154": {
-        "Description": "Flogosi delle alte vie respiratorie"
-    },
-    "155": {
-        "Description": "Trauma nasale"
-    },
-    "201": {
-        "Description": "Congelamento - lesioni da freddo"
-    },
-    "202": {
-        "Description": "Inalazione di sostanze tossiche"
-    },
-    "203": {
-        "Description": "Lesioni da corrente elettriche"
-    },
-    "204": {
-        "Description": "Esposizione a sostanze chimiche"
-    },
-    "205": {
-        "Description": "Ipotermia"
-    },
-    "206": {
-        "Description": "Annegamento"
-    },
-    "207": {
-        "Description": "Sospetto colpo di calore"
-    },
-    "251": {
-        "Description": "Dolore addominale"
-    },
-    "252": {
-        "Description": "Anoressia"
-    },
-    "253": {
-        "Description": "Stipsi"
-    },
-    "254": {
-        "Description": "Diarrea"
-    },
-    "255": {
-        "Description": "Corpo estraneo rettale"
-    },
-    "256": {
-        "Description": "Dolore/massa inguinale"
-    },
-    "257": {
-        "Description": "Nausea e/o vomito ripetuto"
-    },
-    "258": {
-        "Description": "Dolore rettale/perineale"
-    },
-    "259": {
-        "Description": "Vomito ematico ripetuto"
-    },
-    "260": {
-        "Description": "Ematochezia/rettorragia/melena"
-    },
-    "261": {
-        "Description": "Ittero"
-    },
-    "262": {
-        "Description": "Singhiozzo"
-    },
-    "263": {
-        "Description": "Massa /distensione addominale"
-    },
-    "264": {
-        "Description": "Trauma del retto/ano"
-    },
-    "265": {
-        "Description": "Corpo estraneo nel cavo orale/esofago"
-    },
-    "266": {
-        "Description": "Difficolt\u00e0 di alimentazione nel neonato"
-    },
-    "267": {
-        "Description": "Ittero neonatale"
-    },
-    "301": {
-        "Description": "Dolore al fianco"
-    },
-    "302": {
-        "Description": "Macro-ematuria"
-    },
-    "303": {
-        "Description": "Perdite/lesioni genitali"
-    },
-    "304": {
-        "Description": "Tumefazione del pene"
-    },
-    "305": {
-        "Description": "Dolore/tumefazione scrotale"
-    },
-    "306": {
-        "Description": "Ritenzione di urina"
-    },
-    "307": {
-        "Description": "Sintomi da infezione delle vie urinarie"
-    },
-    "308": {
-        "Description": "Oliguria"
-    },
-    "309": {
-        "Description": "Poliuria"
-    },
-    "310": {
-        "Description": "Trauma genitale"
-    },
-    "351": {
-        "Description": "Depressione/suicidio/autolesione"
-    },
-    "352": {
-        "Description": "Ansia/crisi di panico situazionale"
-    },
-    "353": {
-        "Description": "Allucinazioni /delusioni"
-    },
-    "354": {
-        "Description": "Insonnia"
-    },
-    "355": {
-        "Description": "Comportamento violento/omicida"
-    },
-    "356": {
-        "Description": "Problemi sociali"
-    },
-    "358": {
-        "Description": "Comportamento bizzarro"
-    },
-    "359": {
-        "Description": "Preoccupazioni per il benessere del paziente"
-    },
-    "360": {
-        "Description": "Bambino con comportamento distruttivo"
-    },
-    "401": {
-        "Description": "Alterato livello di coscienza"
-    },
-    "402": {
-        "Description": "Stato di confusione"
-    },
-    "403": {
-        "Description": "Vertigini"
-    },
-    "404": {
-        "Description": "Cefalea/emicrania"
-    },
-    "405": {
-        "Description": "Convulsioni"
-    },
-    "406": {
-        "Description": "Disturbo della marcia/atassia"
-    },
-    "407": {
-        "Description": "Trauma cranico"
-    },
-    "408": {
-        "Description": "Tremori"
-    },
-    "409": {
-        "Description": "Debolezza delle estremit\u00e0/sintomi associati a malattia cerebrovascolare"
-    },
-    "410": {
-        "Description": "Perdita di sensibilit\u00e0/parestesie"
-    },
-    "411": {
-        "Description": "Ipotonia del bambino"
-    },
-    "451": {
-        "Description": "Problemi mestruali"
-    },
-    "452": {
-        "Description": "Corpo estraneo in vagina"
-    },
-    "453": {
-        "Description": "Secrezioni vaginali"
-    },
-    "454": {
-        "Description": "Aggressione sessuale"
-    },
-    "455": {
-        "Description": "Sanguinamento vaginale"
-    },
-    "456": {
-        "Description": "Tumefazione dei genitali esterni"
-    },
-    "457": {
-        "Description": "Problemi in gravidanza <20-esima settimana"
-    },
-    "458": {
-        "Description": "Problemi in gravidanza >20-esima settimana"
-    },
-    "460": {
-        "Description": "Dolore vaginale/dispareunia"
-    },
-    "461": {
-        "Description": "Problemi post-partum"
-    },
-    "502": {
-        "Description": "Contaminazione con sostanza chimica"
-    },
-    "503": {
-        "Description": "Corpo estraneo oculare"
-    },
-    "504": {
-        "Description": "Disturbi del visus"
-    },
-    "505": {
-        "Description": "Dolore oculare"
-    },
-    "506": {
-        "Description": "Occhio rosso con secrezioni"
-    },
-    "507": {
-        "Description": "Fotofobia"
-    },
-    "508": {
-        "Description": "Diplopia"
-    },
-    "509": {
-        "Description": "Tumefazione peri-orbitale"
-    },
-    "510": {
-        "Description": "Trauma diretto all\u2019occhio"
-    },
-    "511": {
-        "Description": "Visita di controllo oculare"
-    },
-    "551": {
-        "Description": "Lombalgia"
-    },
-    "552": {
-        "Description": "Trauma al rachide/lesioni della colonna vertebrale"
-    },
-    "553": {
-        "Description": "Amputazione"
-    },
-    "554": {
-        "Description": "Dolore agli arti superiori"
-    },
-    "555": {
-        "Description": "Dolore agli arti inferiori"
-    },
-    "556": {
-        "Description": "Lesione agli arti superiori"
-    },
-    "557": {
-        "Description": "Lesione agli arti inferiori"
-    },
-    "558": {
-        "Description": "Tumefazione di articolazione/i"
-    },
-    "559": {
-        "Description": "Disturbo della marcia/marcia con dolore nel bambino"
-    },
-    "560": {
-        "Description": "Controllo del gesso"
-    },
-    "651": {
-        "Description": "Dispnea"
-    },
-    "652": {
-        "Description": "Arresto Respiratorio"
-    },
-    "653": {
-        "Description": "Tosse/Congestion"
-    },
-    "654": {
-        "Description": "Iperventilazione"
-    },
-    "655": {
-        "Description": "Emottisi"
-    },
-    "656": {
-        "Description": "Corpo estraneo nelle vie respiratorie"
-    },
-    "657": {
-        "Description": "Reazione allergica"
-    },
-    "658": {
-        "Description": "Stridore respiratorio"
-    },
-    "659": {
-        "Description": "Respiro sibilante/Broncospasmo"
-    },
-    "660": {
-        "Description": "Apnee nel neonato"
-    },
-    "701": {
-        "Description": "Lesione da morso"
-    },
-    "702": {
-        "Description": "Lesione da puntura"
-    },
-    "703": {
-        "Description": "Abrasione"
-    },
-    "704": {
-        "Description": "Lacerazione/puntura"
-    },
-    "705": {
-        "Description": "Ustione"
-    },
-    "706": {
-        "Description": "Perdita di sangue e liquido corporeo"
-    },
-    "707": {
-        "Description": "Prurito"
-    },
-    "708": {
-        "Description": "Eritema"
-    },
-    "709": {
-        "Description": "Tumefazione arrossata"
-    },
-    "710": {
-        "Description": "Controllo di ferita"
-    },
-    "711": {
-        "Description": "Altri problemi cutanei"
-    },
-    "712": {
-        "Description": "Granuli, protuberanze e calli"
-    },
-    "713": {
-        "Description": "Arrossamento/rammollimento mammario"
-    },
-    "714": {
-        "Description": "Esclusione d\u2019infestazione"
-    },
-    "715": {
-        "Description": "Cianosi"
-    },
-    "716": {
-        "Description": "Ecchimosi spontanea"
-    },
-    "717": {
-        "Description": "Corpo estraneo cutaneo"
-    },
-    "719": {
-        "Description": "Rimozione di sutura"
-    },
-    "751": {
-        "Description": "Abuso di sostanze/intossicazione"
-    },
-    "752": {
-        "Description": "Overdose di sostanze"
-    },
-    "753": {
-        "Description": "Sindrome d\u2019astinenza"
-    },
-    "801": {
-        "Description": "Politrauma \u2013 penetrante"
-    },
-    "802": {
-        "Description": "Politrauma - contusivo"
-    },
-    "803": {
-        "Description": "Trauma toracico (unico distretto interessato) \u2013 penetrante"
-    },
-    "804": {
-        "Description": "Trauma toracico (unico distretto interessato) \u2013 contusivo"
-    },
-    "805": {
-        "Description": "Trauma addominale (unico distretto interessato) - penetrante"
-    },
-    "806": {
-        "Description": "Trauma addominale (unico distretto interessato) contusivo"
-    },
-    "851": {
-        "Description": "Esposizione a malattie trasmissibili"
-    },
-    "852": {
-        "Description": "Febbre/iperpiressia/ipertermia"
-    },
-    "853": {
-        "Description": "Iperglicemia"
-    },
-    "854": {
-        "Description": "Ipoglicemia"
-    },
-    "855": {
-        "Description": "Richiesta di consulenza specialistica urgente"
-    },
-    "856": {
-        "Description": "Cambio di medicazione"
-    },
-    "859": {
-        "Description": "Diagnostica per immagini/esami biochimici"
-    },
-    "860": {
-        "Description": "Problemi ad un dispositivo medico"
-    },
-    "861": {
-        "Description": "Richiesta di prescrizione o prestazioni"
-    },
-    "862": {
-        "Description": "Rimozione di anello"
-    },
-    "863": {
-        "Description": "Chiarimenti per referti di diagnostica per immagini/laboratorio"
-    },
-    "864": {
-        "Description": "Pallore/anemia"
-    },
-    "865": {
-        "Description": "Complicazioni successive a intervento chirurgico"
-    },
-    "866": {
-        "Description": "Disturbi minori non specifici"
-    },
-    "867": {
-        "Description": "Pianto inconsolabile"
-    },
-    "868": {
-        "Description": "Problemi in bambini con patologia congenita"
-    },
-    "869": {
-        "Description": "Neonato"
-    },
-    "871": {
-        "Description": "Successivo accesso per eseguire terapia"
-    },
-    "998": {
-        "Description": "Paziente registrato che si allontana prima di completare il triage"
-    },
-    "999": {
-        "Description": "Problema non noto"
+    "AREA CARDIOVASCOLARE (001-050)": {
+        "1": {
+            "Description": "Arresto cardiaco non traumatico"
+        },
+        "2": {
+            "Description": "Arresto cardiaco traumatico"
+        },
+        "3": {
+            "Description": "Dolore toracico di sospetta causa cardio-vascolare"
+        },
+        "4": {
+            "Description": "Dolore toracico non sospetto per causa cardio-vascolare"
+        },
+        "5": {
+            "Description": "Cardiopalmo/polso irregolare"
+        },
+        "6": {
+            "Description": "Ipertensione"
+        },
+        "7": {
+            "Description": "Astenia generalizzata"
+        },
+        "8": {
+            "Description": "Sincope/pre-sincope"
+        },
+        "9": {
+            "Description": "Edema generalizzato"
+        },
+        "10": {
+            "Description": "Gamba gonfia/edematosa"
+        },
+        "11": {
+            "Description": "Arto freddo e senza polso"
+        },
+        "12": {
+            "Description": "Arto caldo e arrossato"
+        }
+    },
+    "AREA ORL - ORECCHIO (051-100)": {
+        "51": {
+            "Description": "Otalgia"
+        },
+        "52": {
+            "Description": "Corpo estraneo condotto uditivo esterno"
+        },
+        "53": {
+            "Description": "Perdita dell\u2019udito"
+        },
+        "54": {
+            "Description": "Acufeni"
+        },
+        "55": {
+            "Description": "Otorrea"
+        },
+        "56": {
+            "Description": "Trauma dell\u2019orecchio"
+        }
+    },
+    "AREA ORL - RIMA BUCCALE, CAVO ORALE, COLLO (101-150)": {
+        "101": {
+            "Description": "Odontalgia/problemi gengivali"
+        },
+        "102": {
+            "Description": "Trauma facciale"
+        },
+        "103": {
+            "Description": "Faringodinia"
+        },
+        "104": {
+            "Description": "Gonfiore/dolore al collo"
+        },
+        "105": {
+            "Description": "Trauma del collo"
+        },
+        "106": {
+            "Description": "Disturbi alla deglutizione/disfagia"
+        },
+        "107": {
+            "Description": "Dolore al volto (in assenza di traumi o problemi odontoiatrici)"
+        }
+    },
+    "ORL - NASO (151-200)": {
+        "151": {
+            "Description": "Epistassi"
+        },
+        "152": {
+            "Description": "Congestione nasale, rinite allergica"
+        },
+        "153": {
+            "Description": "Corpo estraneo naso"
+        },
+        "154": {
+            "Description": "Flogosi delle alte vie respiratorie"
+        },
+        "155": {
+            "Description": "Trauma nasale"
+        }
+    },
+    "AREA PROBLEMI AMBIENTALI (201-250)": {
+        "201": {
+            "Description": "Congelamento - lesioni da freddo"
+        },
+        "202": {
+            "Description": "Inalazione di sostanze tossiche"
+        },
+        "203": {
+            "Description": "Lesioni da corrente elettriche"
+        },
+        "204": {
+            "Description": "Esposizione a sostanze chimiche"
+        },
+        "205": {
+            "Description": "Ipotermia"
+        },
+        "206": {
+            "Description": "Annegamento"
+        },
+        "207": {
+            "Description": "Sospetto colpo di calore"
+        }
+    },
+    "AREA DISTURBI GASTRO - INTESTINALI (251-300)": {
+        "251": {
+            "Description": "Dolore addominale"
+        },
+        "252": {
+            "Description": "Anoressia"
+        },
+        "253": {
+            "Description": "Stipsi"
+        },
+        "254": {
+            "Description": "Diarrea"
+        },
+        "255": {
+            "Description": "Corpo estraneo rettale"
+        },
+        "256": {
+            "Description": "Dolore/massa inguinale"
+        },
+        "257": {
+            "Description": "Nausea e/o vomito ripetuto"
+        },
+        "258": {
+            "Description": "Dolore rettale/perineale"
+        },
+        "259": {
+            "Description": "Vomito ematico ripetuto"
+        },
+        "260": {
+            "Description": "Ematochezia/rettorragia/melena"
+        },
+        "261": {
+            "Description": "Ittero"
+        },
+        "262": {
+            "Description": "Singhiozzo"
+        },
+        "263": {
+            "Description": "Massa /distensione addominale"
+        },
+        "264": {
+            "Description": "Trauma del retto/ano"
+        },
+        "265": {
+            "Description": "Corpo estraneo nel cavo orale/esofago"
+        },
+        "266": {
+            "Description": "Difficolt\u00e0 di alimentazione nel neonato"
+        },
+        "267": {
+            "Description": "Ittero neonatale"
+        }
+    },
+    "AREA DISTURBI GENITOURINARI (301-350)": {
+        "301": {
+            "Description": "Dolore al fianco"
+        },
+        "302": {
+            "Description": "Macro-ematuria"
+        },
+        "303": {
+            "Description": "Perdite/lesioni genitali"
+        },
+        "304": {
+            "Description": "Tumefazione del pene"
+        },
+        "305": {
+            "Description": "Dolore/tumefazione scrotale"
+        },
+        "306": {
+            "Description": "Ritenzione di urina"
+        },
+        "307": {
+            "Description": "Sintomi da infezione delle vie urinarie"
+        },
+        "308": {
+            "Description": "Oliguria"
+        },
+        "309": {
+            "Description": "Poliuria"
+        },
+        "310": {
+            "Description": "Trauma genitale"
+        }
+    },
+    "AREA PSICHIATRIA (351-400)": {
+        "351": {
+            "Description": "Depressione/suicidio/autolesione"
+        },
+        "352": {
+            "Description": "Ansia/crisi di panico situazionale"
+        },
+        "353": {
+            "Description": "Allucinazioni /delusioni"
+        },
+        "354": {
+            "Description": "Insonnia"
+        },
+        "355": {
+            "Description": "Comportamento violento/omicida"
+        },
+        "356": {
+            "Description": "Problemi sociali"
+        },
+        "358": {
+            "Description": "Comportamento bizzarro"
+        },
+        "359": {
+            "Description": "Preoccupazioni per il benessere del paziente"
+        },
+        "360": {
+            "Description": "Bambino con comportamento distruttivo"
+        }
+    },
+    "AREA NEUROLOGIA (401-450)": {
+        "401": {
+            "Description": "Alterato livello di coscienza"
+        },
+        "402": {
+            "Description": "Stato di confusione"
+        },
+        "403": {
+            "Description": "Vertigini"
+        },
+        "404": {
+            "Description": "Cefalea/emicrania"
+        },
+        "405": {
+            "Description": "Convulsioni"
+        },
+        "406": {
+            "Description": "Disturbo della marcia/atassia"
+        },
+        "407": {
+            "Description": "Trauma cranico"
+        },
+        "408": {
+            "Description": "Tremori"
+        },
+        "409": {
+            "Description": "Debolezza delle estremit\u00e0/sintomi associati a malattia cerebrovascolare"
+        },
+        "410": {
+            "Description": "Perdita di sensibilit\u00e0/parestesie"
+        },
+        "411": {
+            "Description": "Ipotonia del bambino"
+        }
+    },
+    "AREA OSTETRICO - GINECOLOGICA (451-500)": {
+        "451": {
+            "Description": "Problemi mestruali"
+        },
+        "452": {
+            "Description": "Corpo estraneo in vagina"
+        },
+        "453": {
+            "Description": "Secrezioni vaginali"
+        },
+        "454": {
+            "Description": "Aggressione sessuale"
+        },
+        "455": {
+            "Description": "Sanguinamento vaginale"
+        },
+        "456": {
+            "Description": "Tumefazione dei genitali esterni"
+        },
+        "457": {
+            "Description": "Problemi in gravidanza <20-esima settimana"
+        },
+        "458": {
+            "Description": "Problemi in gravidanza >20-esima settimana"
+        },
+        "460": {
+            "Description": "Dolore vaginale/dispareunia"
+        },
+        "461": {
+            "Description": "Problemi post-partum"
+        }
+    },
+    "AREA OCULISTICA (501-550)": {
+        "502": {
+            "Description": "Contaminazione con sostanza chimica"
+        },
+        "503": {
+            "Description": "Corpo estraneo oculare"
+        },
+        "504": {
+            "Description": "Disturbi del visus"
+        },
+        "505": {
+            "Description": "Dolore oculare"
+        },
+        "506": {
+            "Description": "Occhio rosso con secrezioni"
+        },
+        "507": {
+            "Description": "Fotofobia"
+        },
+        "508": {
+            "Description": "Diplopia"
+        },
+        "509": {
+            "Description": "Tumefazione peri-orbitale"
+        },
+        "510": {
+            "Description": "Trauma diretto all\u2019occhio"
+        },
+        "511": {
+            "Description": "Visita di controllo oculare"
+        }
+    },
+    "AREA ORTOPEDIA (551-600)": {
+        "551": {
+            "Description": "Lombalgia"
+        },
+        "552": {
+            "Description": "Trauma al rachide/lesioni della colonna vertebrale"
+        },
+        "553": {
+            "Description": "Amputazione"
+        },
+        "554": {
+            "Description": "Dolore agli arti superiori"
+        },
+        "555": {
+            "Description": "Dolore agli arti inferiori"
+        },
+        "556": {
+            "Description": "Lesione agli arti superiori"
+        },
+        "557": {
+            "Description": "Lesione agli arti inferiori"
+        },
+        "558": {
+            "Description": "Tumefazione di articolazione/i"
+        },
+        "559": {
+            "Description": "Disturbo della marcia/marcia con dolore nel bambino"
+        },
+        "560": {
+            "Description": "Controllo del gesso"
+        }
+    },
+    "AREA DISTURBI RESPIRATORI (651-700)": {
+        "651": {
+            "Description": "Dispnea"
+        },
+        "652": {
+            "Description": "Arresto Respiratorio"
+        },
+        "653": {
+            "Description": "Tosse/Congestion"
+        },
+        "654": {
+            "Description": "Iperventilazione"
+        },
+        "655": {
+            "Description": "Emottisi"
+        },
+        "656": {
+            "Description": "Corpo estraneo nelle vie respiratorie"
+        },
+        "657": {
+            "Description": "Reazione allergica"
+        },
+        "658": {
+            "Description": "Stridore respiratorio"
+        },
+        "659": {
+            "Description": "Respiro sibilante/Broncospasmo"
+        },
+        "660": {
+            "Description": "Apnee nel neonato"
+        }
+    },
+    "AREA DERMATOLOGIA (701-750)": {
+        "701": {
+            "Description": "Lesione da morso"
+        },
+        "702": {
+            "Description": "Lesione da puntura"
+        },
+        "703": {
+            "Description": "Abrasione"
+        },
+        "704": {
+            "Description": "Lacerazione/puntura"
+        },
+        "705": {
+            "Description": "Ustione"
+        },
+        "706": {
+            "Description": "Perdita di sangue e liquido corporeo"
+        },
+        "707": {
+            "Description": "Prurito"
+        },
+        "708": {
+            "Description": "Eritema"
+        },
+        "709": {
+            "Description": "Tumefazione arrossata"
+        },
+        "710": {
+            "Description": "Controllo di ferita"
+        },
+        "711": {
+            "Description": "Altri problemi cutanei"
+        },
+        "712": {
+            "Description": "Granuli, protuberanze e calli"
+        },
+        "713": {
+            "Description": "Arrossamento/rammollimento mammario"
+        },
+        "714": {
+            "Description": "Esclusione d\u2019infestazione"
+        },
+        "715": {
+            "Description": "Cianosi"
+        },
+        "716": {
+            "Description": "Ecchimosi spontanea"
+        },
+        "717": {
+            "Description": "Corpo estraneo cutaneo"
+        },
+        "719": {
+            "Description": "Rimozione di sutura"
+        }
+    },
+    "SOSTANZE DI ABUSO (751-800)": {
+        "751": {
+            "Description": "Abuso di sostanze/intossicazione"
+        },
+        "752": {
+            "Description": "Overdose di sostanze"
+        },
+        "753": {
+            "Description": "Sindrome d\u2019astinenza"
+        }
+    },
+    "AREA TRAUMA (801-850)": {
+        "801": {
+            "Description": "Politrauma \u2013 penetrante"
+        },
+        "802": {
+            "Description": "Politrauma - contusivo"
+        },
+        "803": {
+            "Description": "Trauma toracico (unico distretto interessato) \u2013 penetrante"
+        },
+        "804": {
+            "Description": "Trauma toracico (unico distretto interessato) \u2013 contusivo"
+        },
+        "805": {
+            "Description": "Trauma addominale (unico distretto interessato) - penetrante"
+        },
+        "806": {
+            "Description": "Trauma addominale (unico distretto interessato) contusivo"
+        }
+    },
+    "DISTURBI GENERALI E PROBLEMI MINORI (851-900)": {
+        "851": {
+            "Description": "Esposizione a malattie trasmissibili"
+        },
+        "852": {
+            "Description": "Febbre/iperpiressia/ipertermia"
+        },
+        "853": {
+            "Description": "Iperglicemia"
+        },
+        "854": {
+            "Description": "Ipoglicemia"
+        },
+        "855": {
+            "Description": "Richiesta di consulenza specialistica urgente"
+        },
+        "856": {
+            "Description": "Cambio di medicazione"
+        },
+        "859": {
+            "Description": "Diagnostica per immagini/esami biochimici"
+        },
+        "860": {
+            "Description": "Problemi ad un dispositivo medico"
+        },
+        "861": {
+            "Description": "Richiesta di prescrizione o prestazioni"
+        },
+        "862": {
+            "Description": "Rimozione di anello"
+        },
+        "863": {
+            "Description": "Chiarimenti per referti di diagnostica per immagini/laboratorio"
+        },
+        "864": {
+            "Description": "Pallore/anemia"
+        },
+        "865": {
+            "Description": "Complicazioni successive a intervento chirurgico"
+        },
+        "866": {
+            "Description": "Disturbi minori non specifici"
+        },
+        "867": {
+            "Description": "Pianto inconsolabile"
+        },
+        "868": {
+            "Description": "Problemi in bambini con patologia congenita"
+        },
+        "869": {
+            "Description": "Neonato"
+        },
+        "871": {
+            "Description": "Successivo accesso per eseguire terapia"
+        }
+    },
+    "REPORTISTICA (951-999)": {
+        "998": {
+            "Description": "Paziente registrato che si allontana prima di completare il triage"
+        },
+        "999": {
+            "Description": "Problema non noto"
+        }
     }
 }
