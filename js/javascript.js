@@ -111,6 +111,8 @@ var language = {
     }
 }
 
+var filepath = "NACRSv5.1_ITA.json"
+
 function filterCodes(data, filter){
     if (!filter){
         return data;
@@ -167,7 +169,7 @@ function getCodes(filter){
     //var ric = $("#search").val();
     $("#codesForm").slideUp(100, "swing");
     //$("#codes").val("");
-    $.getJSON( "NACRSv5.1.json", function( data ) {
+    $.getJSON( filepath, function( data ) {
         refreshVar();
         $("#preloader").fadeOut(function () {
             if (filter){
