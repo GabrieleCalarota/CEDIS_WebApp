@@ -856,6 +856,12 @@ $(document).ready(function () {
             return false;
         }
     })
+
+    $("#close-search").on("click", function(e){
+        $('#search').val('');
+        getCodes();
+    });
+
     $("#search").on("keyup", function (e) {
         clearTimeout(timerSearch);
         timerSearch = setTimeout(function() {
