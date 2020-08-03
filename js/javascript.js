@@ -361,8 +361,8 @@ function annidate(obj, level, description) {
     if (level > 0) {
         var $li = $("<li class='list-" + level + "' code='" + obj.code + "'></li>");
         var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
-        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>" +
-            "<i class='right material-icons'>content_copy</i>  <span class='right'>" + obj.code + "</span> </label>");
+        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><span class='s9 col'><b>" + obj.name + "</b></span>" +
+            "<i class='col s1 right material-icons'>content_copy</i>  <span class='col s2 right'>" + obj.code + "</span> </label>");
         //var $body = $("<div class='collapsible-body'></div>");
         $li.append($checkbox);
         $li.append($label);
@@ -375,18 +375,18 @@ function annidate(obj, level, description) {
         //console.log(name);
         var range_num = description.replace(name, '').replace("(", "[").replace(")", "]");
         var $label = $("<label class='collapsible-header class-description grey-text text-darken-3' for='" + description + "' " +
-            "><b>" + name + "</b></label>");
-        var $span = $("<span class='right'>"+range_num+"</span>");
+            "><span class='col s9'><b>" + name + "</b></span></label>");
+        var $span = $("<span class='col s2 right'>"+range_num+"</span>");
         $li.append($checkbox);
         $li.append($label);
     }
     if (!("figli" in obj)) {
         return $li;
     } else {
-        var $i = $("<i class='circle material-icons right closed white grey-text tooltipped' data-position='left' " +
+        var $i = $("<i class='col s1 circle material-icons right closed white grey-text tooltipped' data-position='left' " +
             "data-delay='1000' data-tooltip='Espandi / riduci menu'>keyboard_arrow_down</i>");
         var $body = $("<div class='collapsible-body'></div>");
-        var $ul = $("<ul class='collapsible popout' data-collapsible='expandable'></ul>");
+        var $ul = $("<ul class='collapsible popout row' data-collapsible='expandable'></ul>");
         var nFigli = 0;
         //$li.append($i);
         $label.append($i);
@@ -589,7 +589,7 @@ function setResult(result) {
     var level0 = createDictionary(result);
     var order = level0;
     //var order = sort(level0);
-    var $res = $("<ul class='collapsible class-description' data-collapsible='expandable'></ul>");
+    var $res = $("<ul class='collapsible class-description row' data-collapsible='expandable'></ul>");
     //console.log(result);
     if (result.length == 0) {
         Materialize.toast(language[UsedLang]["toast"]["diagnosi-not-found"], 4000, "lime");
