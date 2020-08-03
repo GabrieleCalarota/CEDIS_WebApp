@@ -32,10 +32,10 @@ var language = {
 
         },
         "tooltip": {
-            "codeCopy": "Send and copy the selected codes"
+            "codeCopy": "Copy the selected code"
         },
         "toast": {
-            "diagnosi-not-found": "The diagnosis did not produce results, try again with other words",
+            "diagnosi-not-found": "The keywords did not show results, try again with other words",
             "send-success": "Sending data successfully!",
             "send-error": "Sending error!",
             "sender-not-logged": "To be able to send data it is necessary to authenticate,&nbsp; <b><i><a href='#login' class='modal-trigger white-text'> click here to log in </a></i></b>",
@@ -48,10 +48,10 @@ var language = {
             "changePass-error": "The two passwords don't match",
             "email-success": "Email successfully sent!",
             "email-error": "Error sending mail, try again!",
-            "help-user": "Search for ICD codes using the search bar, here is a short tutorial",
+            "help-user": "Search for CEDIS codes using the search bar, here is a short tutorial",
             "help-enter": "Press the ENTER key to search",
             "help-codes": "Here are all the results of the research",
-            "help-select": "Now you can select the most relevant codes, then send the selection using the button at the bottom"
+            "help-select": "Now you can select the most relevant code"
         },
         "placeholder": {
             "search": "Example: Nose trauma"
@@ -84,7 +84,7 @@ var language = {
             "languageButton": "Lingua"
         },
         "tooltip": {
-            "codeCopy": "Invia e copia i codici selezionati"
+            "codeCopy": "Copia il codice selezionato"
         },
         "toast": {
             "diagnosi-not-found": "L'orientamento non ha prodotto risultati, riprova con altre parole",
@@ -966,11 +966,15 @@ $(document).ready(function () {
 
         code = sugarCode(code);
 
-        navigator.clipboard.writeText(code).then(function() {
+        /*navigator.clipboard.writeText(code).then(function() {
             //console.log('Async: Copying to clipboard was successful!');
         }, function(err) {
             console.error('Async: Could not copy text: ', err);
-        });
+        });*/
+        $("#codes").select();
+        document.execCommand('copy');
+        //$("#codes").focus();
+        $("#codes").blur();
     }
 
     $("#codeCopy").on("click", function () {
