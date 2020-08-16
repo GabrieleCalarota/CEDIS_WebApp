@@ -94,7 +94,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 header,
 main,
 footer {
-    padding-left: 300px;
+    /* COMMENT SIDENAV BAR
+    padding-left: 300px;*/
 }
 
 body {
