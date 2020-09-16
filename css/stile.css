@@ -118,6 +118,8 @@ main {
     }
 }
 
+
+
 #search-bar,
 .input-field,
 #search {
@@ -207,7 +209,7 @@ p.collapsible-header {
 
 @media only screen and (max-width: 600px) {
     .bottom-sheet {
-        max-height: 100% !important;
+        max-height: 90% !important;
     }
 
     .modal-fixed-footer {
