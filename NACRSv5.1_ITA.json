@@ -27,7 +27,7 @@
     },
     {
       "5": {
-        "Description": "Cardiopalmo/polso irregolare"
+        "Description": "Cardiopalmo / polso irregolare"
       }
     },
     {
@@ -47,7 +47,7 @@
     },
     {
       "10": {
-        "Description": "Gamba gonfia/edematosa"
+        "Description": "Gamba gonfia / edematosa"
       }
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "8": {
-        "Description": "Sincope/pre-sincope"
+        "Description": "Sincope / pre-sincope"
       }
     }
   ],
@@ -74,7 +74,7 @@
     },
     {
       "713": {
-        "Description": "Arrossamento/rammollimento mammario"
+        "Description": "Arrossamento / rammollimento mammario"
       }
     },
     {
@@ -114,7 +114,7 @@
     },
     {
       "704": {
-        "Description": "Lacerazione/puntura"
+        "Description": "Lacerazione / puntura"
       }
     },
     {
@@ -161,7 +161,7 @@
     },
     {
       "265": {
-        "Description": "Corpo estraneo nel cavo orale/esofago"
+        "Description": "Corpo estraneo nel cavo orale / esofago"
       }
     },
     {
@@ -186,17 +186,17 @@
     },
     {
       "258": {
-        "Description": "Dolore rettale/perineale"
+        "Description": "Dolore rettale / perineale"
       }
     },
     {
       "256": {
-        "Description": "Dolore/massa inguinale"
+        "Description": "Dolore / massa inguinale"
       }
     },
     {
       "260": {
-        "Description": "Ematochezia/rettorragia/melena"
+        "Description": "Ematochezia / rettorragia / melena"
       }
     },
     {
@@ -211,7 +211,7 @@
     },
     {
       "263": {
-        "Description": "Massa /distensione addominale"
+        "Description": "Massa / distensione addominale"
       }
     },
     {
@@ -231,7 +231,7 @@
     },
     {
       "264": {
-        "Description": "Trauma del retto/ano"
+        "Description": "Trauma del retto / ano"
       }
     },
     {
@@ -248,7 +248,7 @@
     },
     {
       "863": {
-        "Description": "Chiarimenti per referti di diagnostica per immagini/laboratorio"
+        "Description": "Chiarimenti per referti di diagnostica per immagini / laboratorio"
       }
     },
     {
@@ -258,7 +258,7 @@
     },
     {
       "859": {
-        "Description": "Diagnostica per immagini/esami biochimici"
+        "Description": "Diagnostica per immagini / esami biochimici"
       }
     },
     {
@@ -273,7 +273,7 @@
     },
     {
       "852": {
-        "Description": "Febbre/iperpiressia/ipertermia"
+        "Description": "Febbre / iperpiressia / ipertermia"
       }
     },
     {
@@ -293,7 +293,7 @@
     },
     {
       "864": {
-        "Description": "Pallore/anemia"
+        "Description": "Pallore / anemia"
       }
     },
     {
@@ -330,6 +330,11 @@
       "871": {
         "Description": "Successivo accesso per eseguire terapia"
       }
+    },
+    {
+      "999": {
+        "Description": "Problema non noto"
+      }
     }
   ],
   "DISTURBI GENITOURINARI (301-350)": [
@@ -340,7 +345,7 @@
     },
     {
       "305": {
-        "Description": "Dolore/tumefazione scrotale"
+        "Description": "Dolore / tumefazione scrotale"
       }
     },
     {
@@ -355,7 +360,7 @@
     },
     {
       "303": {
-        "Description": "Perdite/lesioni genitali"
+        "Description": "Perdite / lesioni genitali"
       }
     },
     {
@@ -444,7 +449,7 @@
     },
     {
       "404": {
-        "Description": "Cefalea/emicrania"
+        "Description": "Cefalea / emicrania"
       }
     },
     {
@@ -454,12 +459,12 @@
     },
     {
       "409": {
-        "Description": "Debolezza delle estremità/sintomi associati a malattia cerebrovascolare"
+        "Description": "Debolezza delle estremità / sintomi associati a malattia cerebrovascolare"
       }
     },
     {
       "406": {
-        "Description": "Disturbo della marcia/atassia"
+        "Description": "Disturbo della marcia / atassia"
       }
     },
     {
@@ -469,7 +474,7 @@
     },
     {
       "410": {
-        "Description": "Perdita di sensibilità/parestesie"
+        "Description": "Perdita di sensibilità / parestesie"
       }
     },
     {
@@ -607,7 +612,7 @@
   "ORL - RIMA BUCCALE, CAVO ORALE, COLLO (101-150)": [
     {
       "106": {
-        "Description": "Disturbi alla deglutizione/disfagia"
+        "Description": "Disturbi alla deglutizione / disfagia"
       }
     },
     {
@@ -622,12 +627,12 @@
     },
     {
       "104": {
-        "Description": "Gonfiore/dolore al collo"
+        "Description": "Gonfiore / dolore al collo"
       }
     },
     {
       "101": {
-        "Description": "Odontalgia/problemi gengivali"
+        "Description": "Odontalgia / problemi gengivali"
       }
     },
     {
@@ -654,7 +659,7 @@
     },
     {
       "559": {
-        "Description": "Disturbo della marcia/marcia con dolore nel bambino"
+        "Description": "Disturbo della marcia / marcia con dolore nel bambino"
       }
     },
     {
@@ -684,12 +689,12 @@
     },
     {
       "552": {
-        "Description": "Trauma al rachide/lesioni della colonna vertebrale"
+        "Description": "Trauma al rachide / lesioni della colonna vertebrale"
       }
     },
     {
       "558": {
-        "Description": "Tumefazione di articolazione/i"
+        "Description": "Tumefazione di articolazione / i"
       }
     }
   ],
@@ -706,7 +711,7 @@
     },
     {
       "460": {
-        "Description": "Dolore vaginale/dispareunia"
+        "Description": "Dolore vaginale / dispareunia"
       }
     },
     {
@@ -785,12 +790,12 @@
   "PSICHIATRIA (351-400)": [
     {
       "353": {
-        "Description": "Allucinazioni /delusioni"
+        "Description": "Allucinazioni / delusioni"
       }
     },
     {
       "352": {
-        "Description": "Ansia/crisi di panico situazionale"
+        "Description": "Ansia / crisi di panico situazionale"
       }
     },
     {
@@ -805,12 +810,12 @@
     },
     {
       "355": {
-        "Description": "Comportamento violento/omicida"
+        "Description": "Comportamento violento / omicida"
       }
     },
     {
       "351": {
-        "Description": "Depressione/suicidio/autolesione"
+        "Description": "Depressione / suicidio / autolesione"
       }
     },
     {
@@ -829,17 +834,10 @@
       }
     }
   ],
-  "REPORTISTICA (951-999)": [
-    {
-      "999": {
-        "Description": "Problema non noto"
-      }
-    }
-  ],
   "SOSTANZE DI ABUSO (751-800)": [
     {
       "751": {
-        "Description": "Abuso di sostanze/intossicazione"
+        "Description": "Abuso di sostanze / intossicazione"
       }
     },
     {
