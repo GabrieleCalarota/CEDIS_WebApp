@@ -32,10 +32,10 @@ var language = {
 
         },
         "tooltip": {
-            "codeCopy": "Send and copy the selected codes"
+            "codeCopy": "Copy the selected code"
         },
         "toast": {
-            "diagnosi-not-found": "The diagnosis did not produce results, try again with other words",
+            "diagnosi-not-found": "The keywords did not show results, try again with other words",
             "send-success": "Sending data successfully!",
             "send-error": "Sending error!",
             "sender-not-logged": "To be able to send data it is necessary to authenticate,&nbsp; <b><i><a href='#login' class='modal-trigger white-text'> click here to log in </a></i></b>",
@@ -48,10 +48,10 @@ var language = {
             "changePass-error": "The two passwords don't match",
             "email-success": "Email successfully sent!",
             "email-error": "Error sending mail, try again!",
-            "help-user": "Search for ICD codes using the search bar, here is a short tutorial",
+            "help-user": "Search for CEDIS codes using the search bar, here is a short tutorial",
             "help-enter": "Press the ENTER key to search",
             "help-codes": "Here are all the results of the research",
-            "help-select": "Now you can select the most relevant codes, then send the selection using the button at the bottom"
+            "help-select": "Now you can select the most relevant code"
         },
         "placeholder": {
             "search": "Example: Nose trauma"
@@ -84,7 +84,7 @@ var language = {
             "languageButton": "Lingua"
         },
         "tooltip": {
-            "codeCopy": "Invia e copia i codici selezionati"
+            "codeCopy": "Copia il codice selezionato"
         },
         "toast": {
             "diagnosi-not-found": "L'orientamento non ha prodotto risultati, riprova con altre parole",
@@ -120,42 +120,64 @@ function filterCodes(data, filter){
     const regexStr = '(?=.*' + filter.split(/\,|\s/).join(')(?=.*') + ')';
     const searchRegEx = new RegExp(regexStr, 'gi');
     result = {}
-    console.log(filter);
+    //console.log(filter);
     $("#codesForm").show();
-    for (var code in data) {
-        var description = data[code]['Description'];
-        //console.log(description);
-        //console.log(words);
-        var $li = $("li[code='"+code+"']");
-        //console.log($li);
-        if (description.toLowerCase().match(searchRegEx)){
-            //console.log("Description "+description+" Code "+code);
-            //$label = $("label[for='" + code + "']");
-            //$li = $label.parent("li");
-            //console.log($li)
-            //$li.hide();
-            result[code]= { 'Description': description};
+    $("#codesForm li.list-0").hide();
+    for (var class_name in data) {
+        var objects = data[class_name]
+        for (var index in objects) {
+            var object_code = objects[index]
+            let [code] = Object.keys(object_code)
+            var description = object_code[code]['Description'];
             //console.log(description);
-            $li.show();
-            //console.log(description);
+            //console.log(words);
+            var $li = $("li[code='" + code + "']");
+            var $li_parent = $li.parents("li");
             //console.log($li);
-        }else{
-            $li.hide();
+            if (description.toLowerCase().match(searchRegEx)) {
+                //console.log("Description "+description+" Code "+code);
+                //$label = $("label[for='" + code + "']");
+                //$li = $label.parent("li");
+                //console.log($li)
+                //$li.hide();
+                result[code] = {'Description': description};
+                //console.log(description);
+                $li.show();
+                $li_parent.show();
+                //console.log($li);
+            } else {
+                $li.hide();
+                //var $children = $li_parent.find("li");
+                //console.log($children.css('display')=='none');
+                //$li_parent.hide();
+                /*$children.each(function(i, obj){
+                   if (obj.style['display']){
+                       $li_parent.show();
+                   }
+                });*/
+            }
         }
     }
     //$("#codesForm").show();
     //console.log(filter);
     //console.log(result);
+    //expandAllCollapsible()
     return result;
 }
 
 function getCodes(filter){
     $("#home").hide();
     $("#preloader").fadeIn();
-    var ric = $("#search").val();
+    //var ric = $("#search").val();
     $("#codesForm").slideUp(100, "swing");
-    $("#codes").val("");
+    //$("#codes").val("");
     $.getJSON( filepath, function( data ) {
+        /*for (var key in data) {
+            data.sort(function (a, b) {
+                return b[1].Description - a[1].Description
+            })
+        }
+        console.log(data)*/
         refreshVar();
         $("#preloader").fadeOut(function () {
             if (filter){
@@ -164,235 +186,33 @@ function getCodes(filter){
                 setResult(data);
             }
         });
+        if (filter){
+            expandAllCollapsible();
+        }
     });
 }
-
-/*
-function getCodes(ric, sF, flag) {
-    var data = new Object();
-    data.request = ric;
-    data.topK = 50;
-    data.startingFrom = sF;
-    data = JSON.stringify(data);
-    $.ajax({
-        url: "//130.136.143.12:8010/api/getList",
-        type: "POST",
-        contentType: "application/json",
-        dataType: "json",
-        start_time: new Date().getTime(),
-        data: data,
-        success: function (result) {
-            refreshVar();
-            flagA = 1;
-            if (flag) {
-                aiuto(1);
-            }
-            setRequestID(result.requestID);
-            $("#preloader").fadeOut(function () {
-                setResult(result.result);
-            });
-            var totalTime = new Date().getTime() - this.start_time;
-            var classTime = totalTime - result.handledIn;
-            console.log("Tempo totale: " + (new Date().getTime() - this.start_time) + "ms");
-            console.log("Tempo ritorno richiesta: " + result.handledIn + "ms");
-            console.log("Tempo latenza: " + (new Date().getTime() - this.start_time - result.handledIn + "ms"));
-            sendTime(totalTime, result.handledIn);
-        }
-    });
-    console.log(ric);
-}*/
-
-/*function sendTime(totalTime, classTime) {
-    var data = new Object();
-    data.totalTime = totalTime;
-    data.classTime = classTime;
-    data.userID = getUserID();
-    data = JSON.stringify(data);
-    $.ajax({
-        url: "//130.136.143.12:8010/admin/addTime",
-        type: "POST",
-        contentType: "application/json",
-        data: data,
-        success: function () {
-            console.log("successo");
-        }
-    })
-}*/
-
-/*
-function createDictionary(result) {
-    level0 = {} //DIZIONARIO PRESUNTI PADRI-ROOT
-    var level1 = {} //DIZIONARIO PRESUNTI FIGLI
-    var level2 = {} //DIZIONARIO PRESUNTI NIPOTI
-    for (var code in result) {
-        switch ((result[code].cod).length) {
-            case 3:
-                level0[result[code].cod] = {};
-                level0[result[code].cod].sum = parseFloat(result[code].score);
-                level0[result[code].cod].count = 1;
-                level0[result[code].cod].code = result[code].cod;
-                level0[result[code].cod].name = result[code].name;
-                level0[result[code].cod].score = parseFloat(result[code].score);
-                break;
-            case 4:
-                level1[result[code].cod] = {};
-                level1[result[code].cod].score = parseFloat(result[code].score);
-                level1[result[code].cod].name = result[code].name;
-                break;
-            case 5:
-                level2[result[code].cod] = {}
-                level2[result[code].cod].score = parseFloat(result[code].score);
-                level2[result[code].cod].name = result[code].name;
-                break;
-        }
-    }
-    //CICLO SUI LEVEL1, QUINDI POSSIBILI FIGLI
-    $.each(level1, function (key, value) {
-        var padre = key.substring(0, 3);
-        if (padre in level0) { //SE ESISTE IL PADRE, INSERISCO QUESTO COME FIGLIO
-            level0[padre].figli = level0[padre].figli || {};
-            level0[padre].figli[key] = {}
-            level0[padre].figli[key].code = key;
-            level0[padre].figli[key].name = level1[key].name;
-            level0[padre].figli[key].score = level1[key].score;
-            level0[padre].sum += level1[key].score;
-            level0[padre].count += 1;
-        } else {
-            level0[key] = {}; //ALTRIMENTI LO INSERISCO COME PADRE-ROOT
-            level0[key].code = key;
-            level0[key].sum = level1[key].score;
-            level0[key].name = level1[key].name;
-            level0[key].score = level1[key].score;
-            level0[key].count = 1;
-        }
-    })
-    //for (var l2 in level2) { //CICLO SUI LEVEL2, QUINDI POSSIBILI NIPOTI
-    $.each(level2, function (key, value) {
-        var nonno = key.substring(0, 3);
-        var padre = key.substring(0, 4);
-        if (nonno in level0) { //SE ESISTE IL NONNO
-            level0[nonno].sum += level2[key].score;
-            level0[nonno].count += 1;
-            level0[nonno].figli = level0[nonno].figli || {}
-            if (padre in level0[nonno].figli) { //SE ESISTE IL PADRE LO APPENDO COME NIPOTE
-                level0[nonno].figli[padre].figli = level0[nonno].figli[padre].figli || {};
-                level0[nonno].figli[padre].figli[key] = {};
-                level0[nonno].figli[padre].figli[key].code = key;
-                level0[nonno].figli[padre].figli[key].name = level2[key].name;
-                level0[nonno].figli[padre].figli[key].score = level2[key].score;
-            } else { //SE NON ESISTE IL PADRE DENTRO AL NONNO LO INSERISCO ALLO STESSO LIVELLO DEGLI "ZII"
-                level0[nonno].figli[key] = {};
-                level0[nonno].figli[key].code = key;
-                level0[nonno].figli[key].name = level2[key].name;
-                level0[nonno].figli[key].score = level2[key].score;
-            }
-        } else if (padre in level0) { //SE ESISTE IL PADRE MA NON IL NONNO LO APPENDO COME FIGLIO
-            level0[padre].sum += level2[key].score;
-            level0[padre].count += 1;
-            level0[padre].figli = level0[padre].figli || {};
-            level0[padre].figli[key] = {};
-            level0[padre].figli[key].code = key;
-            level0[padre].figli[key].name = level2[key].name;
-            level0[padre].figli[key].score = level2[key].score;
-        } else { //SE NON ESISTONO NE IL PADRE NE IL NONNO LO APPENDO COME FRATELLO DEI NONNI
-            level0[key] = {};
-            level0[key].sum = level2[key].score;
-            level0[key].count = 1;
-            level0[key].code = key;
-            level0[key].name = level2[key].name;
-            level0[key].score = level2[key].score;
-        }
-    })
-
-    $.each(level0, function (key, value) {
-        level0[key].avg = level0[key].sum / level0[key].count;
-    })
-
-    //setResult(result);
-    console.log(level0);
-    //console.log(order);
-    return level0;
-}*/
 
 function createDictionary(result){
     level0 = {} //DIZIONARIO PRESUNTI PADRI-ROOT
     //var level1 = {} //DIZIONARIO PRESUNTI FIGLI
     //var level2 = {} //DIZIONARIO PRESUNTI NIPOTI
-    for (var code in result) {
-        level0[code] = {};
-        var temp = level0[code];
-        temp.count = 1;
-        temp.code = code;
-        temp.name = result[code]['Description'];
-        temp.code_int = parseInt(code);
+    for (var class_name in result) {
+        level0[class_name] = {};
+        var level1 = [];
+        var result2 = result[class_name];
+        for (var index in result2) {
+            var object_code = result2[index]
+            let [code] = Object.keys(object_code)
+            var temp = {}
+            temp.count = 1;
+            temp.code = code;
+            temp.class = class_name;
+            temp.name = object_code[code]['Description'];
+            temp.code_int = parseInt(code);
+            level1.push(temp);
+        }
+        level0[class_name].figli = level1;
     }
-
-    /*
-    //CICLO SUI LEVEL1, QUINDI POSSIBILI FIGLI
-    $.each(level1, function (key, value) {
-        var padre = key.substring(0, 3);
-        if (padre in level0) { //SE ESISTE IL PADRE, INSERISCO QUESTO COME FIGLIO
-            level0[padre].figli = level0[padre].figli || {};
-            level0[padre].figli[key] = {}
-            level0[padre].figli[key].code = key;
-            level0[padre].figli[key].name = level1[key].name;
-            level0[padre].figli[key].score = level1[key].score;
-            level0[padre].sum += level1[key].score;
-            level0[padre].count += 1;
-        } else {
-            level0[key] = {}; //ALTRIMENTI LO INSERISCO COME PADRE-ROOT
-            level0[key].code = key;
-            level0[key].sum = level1[key].score;
-            level0[key].name = level1[key].name;
-            level0[key].score = level1[key].score;
-            level0[key].count = 1;
-        }
-    })
-    //for (var l2 in level2) { //CICLO SUI LEVEL2, QUINDI POSSIBILI NIPOTI
-    $.each(level2, function (key, value) {
-        var nonno = key.substring(0, 3);
-        var padre = key.substring(0, 4);
-        if (nonno in level0) { //SE ESISTE IL NONNO
-            level0[nonno].sum += level2[key].score;
-            level0[nonno].count += 1;
-            level0[nonno].figli = level0[nonno].figli || {}
-            if (padre in level0[nonno].figli) { //SE ESISTE IL PADRE LO APPENDO COME NIPOTE
-                level0[nonno].figli[padre].figli = level0[nonno].figli[padre].figli || {};
-                level0[nonno].figli[padre].figli[key] = {};
-                level0[nonno].figli[padre].figli[key].code = key;
-                level0[nonno].figli[padre].figli[key].name = level2[key].name;
-                level0[nonno].figli[padre].figli[key].score = level2[key].score;
-            } else { //SE NON ESISTE IL PADRE DENTRO AL NONNO LO INSERISCO ALLO STESSO LIVELLO DEGLI "ZII"
-                level0[nonno].figli[key] = {};
-                level0[nonno].figli[key].code = key;
-                level0[nonno].figli[key].name = level2[key].name;
-                level0[nonno].figli[key].score = level2[key].score;
-            }
-        } else if (padre in level0) { //SE ESISTE IL PADRE MA NON IL NONNO LO APPENDO COME FIGLIO
-            level0[padre].sum += level2[key].score;
-            level0[padre].count += 1;
-            level0[padre].figli = level0[padre].figli || {};
-            level0[padre].figli[key] = {};
-            level0[padre].figli[key].code = key;
-            level0[padre].figli[key].name = level2[key].name;
-            level0[padre].figli[key].score = level2[key].score;
-        } else { //SE NON ESISTONO NE IL PADRE NE IL NONNO LO APPENDO COME FRATELLO DEI NONNI
-            level0[key] = {};
-            level0[key].sum = level2[key].score;
-            level0[key].count = 1;
-            level0[key].code = key;
-            level0[key].name = level2[key].name;
-            level0[key].score = level2[key].score;
-        }
-    })*/
-
-    /*$.each(level0, function (key, value) {
-        level0[key].avg = level0[key].sum / level0[key].count;
-    })*/
-
-    //setResult(result);
-    //console.log(level0);
-    //console.log(order);
     return level0;
 }
 
@@ -411,180 +231,70 @@ function sort(level0) {
     return order;
 }*/
 
+function expandAllCollapsible(){
 
-function annidate(obj, level) {
-    var $li = $("<li class='list-" + level + "' code='"+obj.code+"'></li>");
-    var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
-    var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><b>" + obj.name + "</b>: " + obj.code + " </label>");
-    $li.append($checkbox);
-    $li.append($label);
+    //var instance = M.Collapsible.getInstance($('.collapsible'));
+    //instance.open();
+
+    $(".collapsible-header.class-description").addClass("active");
+    $(".collapsible.class-description").collapsible({accordion: false});
+}
+
+function collapseAllCollapsible(){
+    $(".collapsible.class-description").removeClass(function(){
+        return "active";
+    });
+    $(".collapsible.class-description").collapsible({accordion: true});
+    $(".collapsible.class-description").collapsible({accordion: false});
+}
+
+function annidate(obj, level, description) {
+    if (level > 0) {
+        var $li = $("<li class='list-" + level + "' code='" + obj.code + "'></li>");
+        var $checkbox = $("<input type='checkbox' id='" + obj.code + "' name='" + obj.name + "' />");
+        var $label = $("<label class='collapsible-header grey-text text-darken-3' for='" + obj.code + "' score=" + obj.score + "><span class='l9 m8 s8 col'><b>" + obj.name + "</b></span>" +
+            "<i class='col l1 m1 s1 right material-icons hide-on-small-only'>content_copy</i>  <span class='col l2 m3 s3 right code'>" + obj.code + "</span> </label>");
+        //var $body = $("<div class='collapsible-body'></div>");
+        $li.append($checkbox);
+        $li.append($label);
+        //$li.append($body);
+    } else{
+        var $li = $("<li class='list-"+ level + "' id='"+description+"'>");
+        var $checkbox = $("<input type='checkbox' />");
+        var name = description.replace(/\([0-9]{3}-[0-9]{3}\)/g, '');
+        //console.log(description);
+        //console.log(name);
+        var range_num = description.replace(name, '').replace("(", "[").replace(")", "]");
+        var $label = $("<label class='collapsible-header class-description grey-text text-darken-3' for='" + description + "' " +
+            "><span class='col l9 m8 s8'><b>" + name + "</b></span></label>");
+        var $span = $("<span class='col l2 m3 s3 right hide-on-small-only'>"+range_num+"</span>");
+        $li.append($checkbox);
+        $li.append($label);
+    }
     if (!("figli" in obj)) {
         return $li;
     } else {
-        var $i = $("<i class='circle material-icons right closed white grey-text tooltipped' data-position='left' data-delay='1000' data-tooltip='Espandi / riduci menu'>keyboard_arrow_down</i>");
+        var $i = $("<i class='col l1 m1 s1 circle material-icons right closed white grey-text tooltipped' data-position='left' " +
+            "data-delay='1000' data-tooltip='Espandi / riduci menu'>keyboard_arrow_down</i>");
         var $body = $("<div class='collapsible-body'></div>");
-        var $ul = $("<ul class='collapsible popout' data-collapsible='expandable'></ul>");
+        var $ul = $("<ul class='collapsible popout row' data-collapsible='expandable'></ul>");
         var nFigli = 0;
+        //$li.append($i);
         $label.append($i);
         $label.append($span);
         $body.append($ul);
         $li.append($body);
-        level++;
-        $.each(obj.figli, function (key, value) {
-            $ul.append(annidate(obj.figli[key], level));
+        $.each(obj.figli, function (index, value) {
+            $ul.append(annidate(obj.figli[index], level+1));
             nFigli++;
         })
-        var $span = $("<span class='right grey-text nAnnidamento'>" + nFigli + "</span>");
-        $label.append($span);
+        //var $span = $("<span class='right grey-text nAnnidamento'>" + nFigli + "</span>");
+        //$label.append($span);
     }
     return $li;
 }
 
-/*
-function sendSelection(res) {
-    console.log(getRicerca());
-    var data = new Object();
-    data.requestID = getRequestID();
-    data.request = getRicerca();
-    data.res1 = res[0];
-    data.res2 = res[1];
-    data.res3 = [];
-    for (i = 2; i < res.length; i++)
-        data.res3.push(res[i]);
-    if (checkUser(0))
-        data.level = "Training";
-    else
-        data.level = "Demo";
-    data = JSON.stringify(data);
-    $.ajax({
-        url: "//130.136.143.12:8010/api/result",
-        type: "POST",
-        contentType: "application/json",
-        data: data,
-        success: function () {
-            Materialize.toast(language[UsedLang]["toast"]["send-success"], 3000, "green darken-2");
-            $("#codes").blur();
-            $('body').animate({
-                scrollTop: 0
-            }, 300, function () {
-                $("#code-wrapper").addClass("scale-out");
-                $("#codeCopy").addClass("disabled");
-                $("#codes").addClass("scale-out");
-                $("#codesForm").slideUp(500, "swing", function () {
-                    $("#home").fadeIn(300, "swing");
-                });
-                $("#search").val("");
-            });
-        },
-        error: function (jqXHR) {
-            if (jqXHR.status == "401")
-                Materialize.toast(language[UsedLang]["toast"]["sender-not-logged"], 5000, "lime");
-            else
-                Materialize.toast(language[UsedLang]["toast"]["send-error"], 3000, "red darken-2");
-        }
-    });
-}*/
 
-/*
-function loginAjax(n, p) {
-    var data = new Object();
-    data.username = n;
-    data.password = p;
-    data = JSON.stringify(data);
-    $.ajax({
-        type: "POST",
-        url: "//130.136.143.12:8010/api/login",
-        data: data,
-        contentType: "application/json; charset=UTF-8",
-        success: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["login-success"], 3000, "green darken-2");
-            refreshUser();
-            restoreLogin();
-            logged(n);
-        },
-        error: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["login-wrong"], 3000, "red darken-2");
-            restoreLogin();
-
-        }
-    });
-}*/
-
-
-/*
-function logoutAjax() {
-    $.ajax({
-        type: "GET",
-        url: "//130.136.143.12:8010/api/logout",
-        success: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["logout-success"], 3000, "green darken-2");
-            refreshUser();
-            restoreLogin();
-            setUserID("");
-            logout();
-        },
-        error: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["logout-wrong"] + result.responseText, 3000, "red darken-2");
-        }
-    });
-}
-
-function changePasswd(o, n) {
-    var data = new Object();
-    data.password = o;
-    data.newPassword = n;
-    data = JSON.stringify(data);
-    $.ajax({
-        type: "POST",
-        url: "//130.136.143.12:8010/api/changePassword",
-        data: data,
-        contentType: "application/json; charset=UTF-8",
-        success: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["changePass-success"], 3000, "green darken-2");
-            restoreChangePwd()
-            $('#changePsw').modal('close');
-        },
-        error: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["changePass-wrong"], 3000, "red darken-2");
-            restoreChangePwd();
-        }
-    });
-}*/
-
-/*
-function sendIssue(text, email, name) {
-    var data = new Object();
-    data.text = text;
-    data.email = email;
-    data.name = name;
-    data = JSON.stringify(data);
-    $.ajax({
-        type: "POST",
-        url: "//130.136.143.12:8010/admin/contactUs",
-        data: data,
-        contentType: "application/json",
-        success: function () {
-            Materialize.toast(language[UsedLang]["toast"]["email-success"], 3000, "green darken-2");
-            $('#contattaci').modal('close');
-            $("#f-contattaci textarea, #f-contattaci input").val("");
-        },
-        error: function (result) {
-            Materialize.toast(language[UsedLang]["toast"]["email-error"] + result.responseText, 3000, "red darken-2");
-        }
-    })
-}*/
-
-/*
-function restoreLogin() {
-    $("#nome_utente").val("");
-    $("#password").val("");
-}
-
-function restoreChangePwd() {
-    $("#old-psw").val("");
-    $("#new-psw").val("");
-    $("#new-psw2").val("");
-}*/
 
 
 
@@ -604,65 +314,45 @@ function logged(user) {
     getCodes();
 }
 
-/*
-function logout() {
-    $("#nUtente").removeClass("scale-in").addClass("scale-out");
-    $("#user-id").empty();
-    $("#col").removeClass("scale-in").addClass("scale-out").slideUp(300, "swing");
-    $("#logButton").show().removeClass("scale-out").addClass("scale-in");
-    $("#page-title").click();
-    $("#codesForm").slideUp(100, "swing", function () {
-        $("#codesForm").html("");
-    });
-    $("#home").fadeIn(300, "swing");
-    $("#search").val("");
-    $("#codeCopy").addClass("disabled");
-    $("#code-wrapper, #codes").addClass("scale-out");
-    flagA = 0;
-    Cookies.remove("userWA");
-}*/
+
 
 function setResult(result) {
     var level0 = createDictionary(result);
-    var order = sort(level0);
-    var $res = $("<ul class='collapsible popout' data-collapsible='expandable'></ul>");
+    var order = level0;
+    //var order = sort(level0);
+    var $res = $("<ul class='collapsible class-description row' data-collapsible='expandable'></ul>");
     //console.log(result);
     if (result.length == 0) {
         Materialize.toast(language[UsedLang]["toast"]["diagnosi-not-found"], 4000, "lime");
         $("#code-wrapper").addClass("scale-out");
     } else {
-        for (var code in order) {
-            var obj = level0[order[code]];
-            var li = annidate(obj, 1);
+        for (var key in order) {
+            var obj = level0[key];
+            var li = annidate(obj, 0, key);
             $res.append(li);
         }
         $("#codesForm").html($res);
         $("#codesForm").slideDown(500, "swing");
         $("#code-wrapper").removeClass("scale-out");
         //$("#search").blur();
-        $('.collapsible').collapsible();
+        $('.collapsible').collapsible({
+            onOpen: function (el) {
+                //console.log("opened");
+                //console.log(el.children("label").children("i.tooltipped").length);
+                if (el.children("label").children("i.tooltipped").length > 0) {
+                    expand_or_collapse.call(el.children("label").children("i.tooltipped"))
+                }
+            },
+            onClose: function (el) {
+                //console.log("closed");
+                //console.log(el.children("label").children("i.tooltipped"));
+                //console.log(el.children("label").children("i.tooltipped").length);
+                if (el.children("label").children("i.tooltipped").length > 0) {
+                    expand_or_collapse.call(el.children("label").children("i.tooltipped"))
+                }
+            }
+        });
         setRicerca();
-    }
-}
-
-function viewResult(res) {
-    if (res.length <= 10) {
-        for (var i = 0; i < res.length; i++)
-            $(res[i]).slideDown(500, "swing");
-    } else {
-        for (var i = 0; i < 10; i++)
-            $(res[i]).slideDown(500, "swing");
-        setResHide(res.slice(10, res.length));
-    }
-}
-
-function search(elem, array, remove) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].cod === elem) {
-            if (remove)
-                delete array[i];
-            return true;
-        }
     }
 }
 
@@ -671,10 +361,10 @@ async function stampa() {
     var val = "";
     for (var i = 0; i < codeListTemp.length - 1; i++) {
         if (codeListTemp[i] != undefined)
-            val += codeListTemp[i].cod + ", ";
+            val += sugarCode(codeListTemp[i].cod) + ", ";
     }
     if (codeListTemp[i] != undefined)
-        val += codeListTemp[i].cod;
+        val += sugarCode(codeListTemp[i].cod);
     $("#codes").val(val);
 }
 
@@ -741,73 +431,6 @@ function getSelectionData() {
     return list;
 }
 
-/*
-function checkUser(flag) {
-    var cookie = Cookies.get('userWA');
-    if (cookie != undefined) {
-        if (flag)
-            logged(cookie);
-        else
-            return true;
-    }
-    return false;
-}*/
-
-/*
-function aiuto(flag) {
-    if (!flag) {
-        setTimeout(function () {
-            Materialize.toast(language[UsedLang]["toast"]["help-user"], 4000, 'green darken-4');
-        }, 1000);
-        setTimeout(function () {
-            $("#search").focus();
-        }, 6000);
-        setTimeout(function () {
-            $("#search").val("F");
-        }, 8300);
-        setTimeout(function () {
-            $("#search").val("Fa");
-        }, 8500);
-        setTimeout(function () {
-            $("#search").val("Far");
-        }, 8700);
-        setTimeout(function () {
-            $("#search").val("Fari");
-        }, 8800);
-        setTimeout(function () {
-            $("#search").val("Farin");
-        }, 8900);
-        setTimeout(function () {
-            $("#search").val("Faring");
-        }, 9000);
-        setTimeout(function () {
-            $("#search").val("Faringi");
-        }, 9300);
-        setTimeout(function () {
-            $("#search").val("Faringit");
-        }, 9500);
-        setTimeout(function () {
-            $("#search").val("Faringite");
-        }, 9600);
-        setTimeout(function () {
-            Materialize.toast(language[UsedLang]["toast"]["help-enter"], 2000, 'green darken-4');
-        }, 9700);
-        flagA = 2;
-    } else {
-        setTimeout(function () {
-            Materialize.toast(language[UsedLang]["toast"]["help-codes"], 2000, 'green darken-4');
-        }, 1000);
-        setTimeout(function () {
-            Materialize.toast(language[UsedLang]["toast"]["help-select"], 4000, 'green darken-4');
-            $("#codeCopy").addClass("pulse");
-        }, 3500);
-        setTimeout(function () {
-            $("#codeCopy").removeClass("pulse");
-        }, 7500);
-        flagA = 1
-    }
-}*/
-
 function setLanguage(Lang) {
     UsedLang = Lang
     for (var key in language[Lang]["string"]) {
@@ -822,18 +445,39 @@ function setLanguage(Lang) {
     }
 }
 
-$(document).ready(function () {
-    $('.modal').modal({
-        complete: function () {
-            restoreLogin();
-            restoreChangePwd();
-        }
-    });
+function expand_or_collapse() {
+    //console.log($(this));
+    if (!$(this).hasClass("closed")) {
+        $(this).html("keyboard_arrow_down");
+        $(this).parent().siblings("div").slideUp(300, "swing");
+    } else if (!$(this).hasClass("open")) {
+        $(this).html("keyboard_arrow_up");
+        $(this).parent().siblings("div").slideDown(300, "swing");
+    } else{
+        console.error("this has no class closed or open");
+        return false;
+    }
+    $(this).toggleClass("closed open");
+    if (!$(this).parent().parent().hasClass("active")) {
+        $(this).parent().parent().addClass("active");
+        $(this).parent().addClass("active");
+    } else {
+        $(this).parent().parent().removeClass("active");
+        $(this).parent().removeClass("active");
+    }
+    return false;
+}
 
-    $(".button-collapse").sideNav({
+function sugarCode(code){
+    return "#"+code+"#";
+}
+
+$(document).ready(function () {
+
+    /*$(".button-collapse").sideNav({
         closeOnClick: true,
         draggable: true
-    });
+    });*/
     var lang = navigator.language || navigator.userLanguage
     cookieLang = Cookies.get("language");
     if (cookieLang != undefined) {
@@ -855,6 +499,12 @@ $(document).ready(function () {
             return false;
         }
     })
+
+    $("#close-search").on("click", function(e){
+        $('#search').val('');
+        getCodes();
+    });
+
     $("#search").on("keyup", function (e) {
         clearTimeout(timerSearch);
         timerSearch = setTimeout(function() {
@@ -873,7 +523,7 @@ $(document).ready(function () {
         var lang = $(this).attr("id").substring(0, 2);
         setLanguage(lang);
         Cookies.set("language", lang);
-        $(".collapsible").collapsible("close", 0);
+        //$(".collapsible").collapsible("close", 0);
     })
 
     // Result
@@ -883,7 +533,11 @@ $(document).ready(function () {
         $label.removeClass("active");
         $label.parent().removeClass("active");
         $label.children("span").removeClass("white-text");
-        $label.find("i")
+        let $span_code = $label.find("span.code")
+        $span_code.removeClass("flow-text");
+        $span_code.css("font-weight", "");
+        $span_code.css("font-size", "");
+        $label.find("i.tooltipped")
             .html("keyboard_arrow_down")
             .removeClass("open")
             .addClass("closed");
@@ -900,7 +554,6 @@ $(document).ready(function () {
             $("#codeCopy").addClass("disabled");
             $("#codes").addClass("scale-out");
         }
-
     }
 
     function getLevelFromLabel($label) {
@@ -912,6 +565,9 @@ $(document).ready(function () {
         var code = $(this).attr("id");
         var $label = $("label[for='" + code + "']");
         var level = getLevelFromLabel($label);
+        if (level === 0){
+            return;
+        }
         if ($label.hasClass("active")) {
             if (getSelection()){
                 deSelectLabel(getSelection(), getLevelFromLabel(getSelection()));
@@ -919,7 +575,12 @@ $(document).ready(function () {
             setSelection($label);
             $label.addClass("selected");
             $label.children("span").addClass("white-text");
-            $label.find("i")
+            let $span_code = $label.find("span.code")
+            //console.log($span_code);
+            $span_code.addClass("flow-text");
+            $span_code.css("font-weight", "bold");
+            $span_code.css("font-size", "2.5em");
+            $label.find("i.tooltipped")
                 .html("keyboard_arrow_up")
                 .removeClass("closed")
                 .addClass("open");
@@ -941,25 +602,11 @@ $(document).ready(function () {
         }, 500);
     });
 
-    $(document).on("click", "label i", function (e) {
-        if (!$(this).hasClass("closed")) {
-            $(this).html("keyboard_arrow_down");
-            $(this).parent().siblings("div").slideUp(300, "swing");
-        } else {
-            $(this).html("keyboard_arrow_up");
-            $(this).parent().siblings("div").slideDown(300, "swing");
-        }
-        $(this).toggleClass("closed open");
-        if (!$(this).parent().parent().hasClass("active")) {
-            $(this).parent().parent().addClass("active");
-            $(this).parent().addClass("active");
-        } else {
-            $(this).parent().parent().removeClass("active");
-            $(this).parent().removeClass("active");
-        }
+    /*$(document).on("click", "label i", function (e) {
+        expand_or_collapse.call(this);
         e.stopPropagation();
         return false;
-    });
+    });*/
 
     async function copyCode(code) {
         if (!code){
@@ -969,11 +616,17 @@ $(document).ready(function () {
         //$codes.select();
         //document.execCommand('copy');
 
-        navigator.clipboard.writeText(code).then(function() {
-            console.log('Async: Copying to clipboard was successful!');
+        code = sugarCode(code);
+
+        /*navigator.clipboard.writeText(code).then(function() {
+            //console.log('Async: Copying to clipboard was successful!');
         }, function(err) {
             console.error('Async: Could not copy text: ', err);
-        });
+        });*/
+        $("#codes").select();
+        document.execCommand('copy');
+        //$("#codes").focus();
+        $("#codes").blur();
     }
 
     $("#codeCopy").on("click", function () {
@@ -984,48 +637,4 @@ $(document).ready(function () {
 
     logged(undefined);
 
-    // Login
-
-    /*$("#accedi").on("click", function () {
-        var user = $("#nome_utente").val();
-        var pass = $("#password").val();
-        loginAjax(user, pass);
-    });
-
-    $("#login #password").keypress(function (e) {
-        if (e.keyCode == 13)
-            $("#accedi").click();
-    });
-
-    $("#logout").click(function () {
-        logoutAjax();
-    });*/
-
-    /*$(document).on("submit", "#cPswForm", function () {
-        var old = $("#old-psw").val();
-        var new1 = $("#new-psw").val();
-        var new2 = $("#new-psw2").val();
-        if (new1 === new2)
-            changePasswd(old, new1);
-        else {
-            Materialize.toast(language[UsedLang]["toast"]["changePass-error"], 3000, 'red darken-2');
-            restoreChangePwd();
-        }
-        return false;
-    });
-
-    $(document).on("submit", "#f-contattaci", function () {
-        var text = $("#c-area").val();
-        var email = $("#email").val();
-        var name = $("#nome").val();
-        sendIssue(text, email, name);
-        return false;
-    });
-
-    $("#help-btn").on("click", function () {
-        if (!flagA)
-            aiuto(0);
-        else
-            aiuto(1);
-    });*/
 });

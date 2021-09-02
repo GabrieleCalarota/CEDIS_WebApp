@@ -73,7 +73,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 @media only screen and (max-width: 600px) {
     #search-bar {
         width: 100%;
-        margin: 56px auto 0;
+        margin: 12px auto 0;
     }
 
     #search-bar,
@@ -94,7 +94,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 header,
 main,
 footer {
-    padding-left: 300px;
+    /* COMMENT SIDENAV BAR
+    padding-left: 300px;*/
 }
 
 body {
@@ -116,6 +117,8 @@ main {
         padding-left: 0;
     }
 }
+
+
 
 #search-bar,
 .input-field,
@@ -206,7 +209,7 @@ p.collapsible-header {
 
 @media only screen and (max-width: 600px) {
     .bottom-sheet {
-        max-height: 100% !important;
+        max-height: 90% !important;
     }
 
     .modal-fixed-footer {
